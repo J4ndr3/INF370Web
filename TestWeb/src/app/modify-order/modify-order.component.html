@@ -1,0 +1,64 @@
+<br>
+<h1>Modify Order</h1>
+<hr class="hrow" />
+<br>
+
+<div class="inner">
+    <div class="back">
+        <button class="btn btn-default btn-sm" id="backBTN" routerLink="/order" data-toggle="tooltip" data-placement="top" title="Back">
+          <img src="/assets/ios-arrow-round-back.svg" class="BackBTN" /></button>
+    </div>
+    <br>
+    <form class="form-horizontal" id="modifyForm" action="/action_page.php" [formGroup]="EditForm">
+
+        <div class="form-group">
+            <h2 class="Header">Modify Order:</h2>
+            <br>
+            <div class="col-sm-10">
+            <input type="date" class="form-control" id="Level" placeholder="Date..." name="Level" formControlName="Date" required data-toggle="tooltip" data-placement="top" title="Date">
+            </div>
+            <div class="col-sm-10">
+            <select formControlName="Status" [(value)]="EventRewardAddSelection" class="form-control" id="Select1" onchange="selectColor()" required data-toggle="tooltip" data-placement="top" title="Status">
+                    <option disabled  [value]="" style="color:white">Status...</option>
+                    <option >true</option>
+                    <option >false</option>
+                </select>
+                </div>
+                <div class="col-sm-10">
+            <select formControlName="Supplier" [(value)]="EventRewardAddSelection" class="form-control" id="Select1" onchange="selectColor()" required data-toggle="tooltip" data-placement="top" title="Supplier">
+                        <option disabled  [value]="" style="color:white">Supplier...</option>
+                        <option *ngFor="let opt of SupplierOptions" [(value)]="opt.ID">{{opt.Name}}</option>
+                    </select>
+                    </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10" id="savediv">
+                <button type="submit" class="btn btn-default" id="Save" (click)="update()" data-toggle="tooltip" data-placement="top" title="Click to save">Save</button>
+            </div>
+            <br>
+            <br>
+        </div>
+    </form>
+</div>
+
+
+<div class="modal fade" id="myModal" role="dialog" data-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" style="text-align: left !important;"><img src="/assets/ios-alert.svg" style="width:40px; margin-top:0px;" />Error</h4>
+                <button type="button" class="close" data-dismiss="modal" style="float:right !important;">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>The input provided is incorrect. Please try again.</p>
+                <button type="button" class="btn btn-default" data-dismiss="modal" style="float: right !important;" id="modalClose">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<br>
+<br>

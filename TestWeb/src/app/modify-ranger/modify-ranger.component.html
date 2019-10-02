@@ -1,0 +1,157 @@
+<h1>
+    MODIFY RANGER</h1>
+<hr class="hrow" />
+<br>
+
+<div class="inner">
+    <div class="back">
+        <button class="btn btn-default btn-sm" id="backBTN" routerLink="/rangers" data-toggle="tooltip" data-placement="top" title="Back">
+          <img src="/assets/ios-arrow-round-back.svg" class="BackBTN" /></button>
+    </div>
+    <br>
+    <form class="form-horizontal" id="modifyForm" [formGroup]="EditForm" (ngSubmit)="update()">
+
+        <div class="form-group">
+            <h2 class="Header">Ranger Information:</h2>
+            <br>
+            <div class="col-sm-10">
+                <input type="text" hidden class="form-control" formControlName="ID" id="ID" placeholder="ID..." name="ID" maxlength="13" required>
+                <input type="text" hidden class="form-control" formControlName="password" id="ID" placeholder="ID..." name="ID" maxlength="20" required>
+                <input type="text" class="form-control" formControlName="rangerId" id="ID" placeholder="ID..." name="ID" required maxlength="13" data-toggle="tooltip" data-placement="top" title="Ranger ID">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-10">
+                <input type="text" class="form-control" formControlName="fname" id="Name" placeholder="Name..." name="Name" maxlength="50" required data-toggle="tooltip" data-placement="top" title="Name">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="Surname" formControlName="lname" placeholder="Surname..." name="Surname" maxlength="50" required data-toggle="tooltip" data-placement="top" title="Surname">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-10">
+                <input type="tel" class="form-control" id="Cell" formControlName="phone" placeholder="Cellphone Number..." name="Cell" maxlength="10" required data-toggle="tooltip" data-placement="top" title="Cellphone Number">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-10">
+                <input type="email" class="form-control" id="email" formControlName="email" placeholder="Email..." name="Email" maxlength="50" required data-toggle="tooltip" data-placement="top" title="Email">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="emergName" formControlName="emergencycontactName" placeholder="Emergency contact's Name..." name="Email" maxlength="50" required data-toggle="tooltip" data-placement="top" title="Emergency Contact's Name">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-10">
+                <input type="tel" class="form-control" id="emergContact" formControlName="EmergencycontactNumber" placeholder="Emergency contact's Cell..." name="Email" maxlength="10" required data-toggle="tooltip" data-placement="top" title="Emergency Contact's Cell">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="user" formControlName="username" placeholder="Username..." name="Username" maxlength="20" required data-toggle="tooltip" data-placement="top" title="Username">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-10">
+                <select placeholder="Select Organisation..." formControlName="Organizationtitle" class="form-control" id="Select1" onchange="selectColor()" style="margin-bottom:2% !important;" name="selectgender" required data-toggle="tooltip" data-placement="top" title="Organisation">
+                    <option disabled  [value]="" style="color:white">Organisation...</option>
+                <option *ngFor="let org of OrganisationOptions" [(value)]="org.ID">{{org.Descriprion}}</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-10">
+                <select placeholder="Select Medical Aid..." formControlName="MedicalAid" class="form-control" id="Select1" onchange="selectColor()" style="margin-bottom:2% !important;" name="selectgender" required data-toggle="tooltip" data-placement="top" title="Medical Aid">
+                    <option disabled  [value]="" style="color:white">Medical Aid...</option>
+                <option *ngFor="let org of MedicalOptions" [(value)]="org.ID">{{org.Descriprion}}</option>
+                </select>
+            </div>
+        </div>
+        <!--Let op die JavaScript function: maak seker die function is gemaak vir elke dropdown. Die disabled option wys blou en as n ander value select is dan raak dit wit-->
+
+        <div class="form-group">
+            <div class="col-sm-10">
+                <select placeholder="Select Gender..." formControlName="selectgender" class="form-control" id="Select1" onchange="selectColor()" style="margin-bottom:2% !important;" name="selectgender" required data-toggle="tooltip" data-placement="top" title="Gender">
+                    <option disabled  [value]="" style="color:white">Gender...</option>
+                    <option *ngFor="let gen of GenderOptions" [(value)]="gen.ID">{{gen.Descriprion}}</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-10">
+                <select formControlName="UserRole" class="form-control" id="Select1" onchange="selectColor()" required data-toggle="tooltip" data-placement="top" title="User Role">
+                    <option disabled  [value]="" style="color:white">User role...</option>
+                        <option *ngFor="let opt of UserRoleOptions" [(value)]="opt.ID">{{opt.Description}}</option>
+                      </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-10">
+                <select class="form-control" formControlName="Status" id="Select2" onchange="selectColor1()" required data-toggle="tooltip" data-placement="top" title="Status">
+                    <option disabled  [value]="" style="color:white">Status...</option>
+                    <option>Active</option>
+                    <option>Inactive</option>
+                    </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-10">
+                <select class="form-control" formControlName="selectbloodtype" id="Select1" onchange="selectColor()" required data-toggle="tooltip" data-placement="top" title="Bloodtype">
+          <option disabled  [value]="" style="color:white">Bloodtype...</option>
+          <option>A+</option>
+          <option>B+</option>
+          <option>AB+</option>
+          <option>O+</option>
+          <option>A-</option>
+          <option>B-</option>
+          <option>AB-</option>
+          <option>O-</option>
+        </select>
+            </div>
+        </div>
+
+        <!--Moenie die save button verander nie-->
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10" id="savediv">
+                <button type="submit" class="btn btn-default" id="Save" data-toggle="tooltip" data-placement="top" title="Click to save">Save</button>
+            </div>
+            <br>
+            <br>
+        </div>
+    </form>
+</div>
+
+
+<div class="modal fade" id="myModal" role="dialog" data-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" style="text-align: left !important;"><img src="/assets/ios-alert.svg" style="width:40px; margin-top:0px;" />Error</h4>
+                <button type="button" class="close" data-dismiss="modal" style="float:right !important;">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>The input provided is incorrect. Please try again.</p>
+                <button type="button" class="btn btn-default" data-dismiss="modal" style="float: right !important;" id="modalClose">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<br>

@@ -1,0 +1,53 @@
+<h1>
+    RANGER PERFORMANCE REPORT</h1>
+
+<hr class="hrow" />
+<div id="chartdiv" chart style="width: 85% !important; height: 500px !important; margin: auto;" #chartElement></div>
+<br>
+<hr class="hrow" />
+
+<div class="outer">
+    <div class="button">
+        <button type="submit" class="btn btn-default" id="Save" (click)="Download()" data-toggle="collapse" data-target="#demo"> <span data-toggle="tooltip" data-placement="top" title="Click to download">Download PDF </span></button>
+    </div>
+    <!--Moenie buttons en search bar verander nie-->
+
+</div>
+<div id="content" #content>
+    <div id="contentToConvert">
+        <div id="chrt" align="center"></div>
+        <br>
+        <div class="table">
+            <table class="table table-striped" id="Perf">
+                <thead>
+                    <tr id="header">
+                        <th style="text-align: left;">Name</th>
+                        <th style="text-align: left;">Surname</th>
+                        <th style="text-align: left;">Cellphone</th>
+                        <th style="text-align: right;">Hours Patrolled</th>
+                        <th style="text-align: right;">Points</th>
+                        <th style="text-align: right;">Markers passed</th>
+                        <th style="text-align: right;">Monthly points</th>
+                        <!--<th>Actions</th>-->
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let Performance of performances">
+                        <td style="text-align: left;">{{Performance.Name}}</td>
+                        <td style="text-align: left;">{{Performance.Surname}}</td>
+                        <td style="text-align: left;">{{Performance.Cell}}</td>
+                        <td style="text-align: right;">{{Performance.time}} Hours</td>
+                        <td style="text-align: right;">{{Performance.Points}}</td>
+                        <td style="text-align: right;">{{Performance.MarkerPast}}</td>
+                        <td style="text-align: right;">{{Performance.MonthPoints}}</td>
+                        <!--Moenie die code verander nie. Sit net nuwe kollomme bo dit in-->
+
+                    </tr>
+                </tbody>
+
+            </table>
+
+        </div>
+        <div id="chrt2" align="center"></div>
+    </div>
+</div>

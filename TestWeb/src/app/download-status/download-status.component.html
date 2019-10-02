@@ -1,0 +1,124 @@
+<div id="content" #content>
+    <div id="contentToConvert">
+        <div id="chrt1" align="center"></div>
+
+
+        <h3 align="center">Ranger Status Report</h3>
+
+        <div class="table">
+            <table class="table table-striped">
+                <thead>
+                    <tr id="header">
+                        <th>Name</th>
+                        <th>Surname</th>
+                        <th>Cellphone</th>
+                        <th>Email</th>
+                        <th>Status</th>
+
+                        <!--<th>Actions</th>-->
+                    </tr>
+                </thead>
+                <tbody id="mytable">
+                    <tr *ngFor="let Ranger of Rangers">
+                        <td>{{Ranger.Name}}</td>
+                        <td>{{Ranger.Surname}}</td>
+                        <td>{{Ranger.Cell}}</td>
+                        <td>{{Ranger.Email}}</td>
+                        <td>{{Ranger.Status}}</td>
+                        <!--Moenie die code verander nie. Sit net nuwe kollomme bo dit in-->
+
+                    </tr>
+                </tbody>
+                <tfoot style="background-color:rgba(205, 21, 67);">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>Total Active Rangers : {{Count1}}</td>
+                </tfoot>
+            </table>
+        </div>
+
+
+
+
+        <h3 align="center">Asset Status</h3>
+
+
+        <div class="table">
+            <table class="table table-striped">
+                <thead>
+                    <tr id="header">
+
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Status</th>
+
+
+                        <!--<th>Actions</th>-->
+                    </tr>
+                </thead>
+                <tbody id="mytable">
+                    <tr *ngFor="let Asset of Assets">
+
+                        <td>{{Asset.Type}}</td>
+                        <td>{{Asset.Description}}</td>
+                        <td>{{Asset.Status}}</td>
+
+                        <!--Moenie die code verander nie. Sit net nuwe kollomme bo dit in-->
+
+                    </tr>
+                </tbody>
+                <tfoot style="background-color:rgba(205, 21, 67);">
+
+                    <td></td>
+                    <td></td>
+                    <td>Total Active Assets : {{Count}}</td>
+                </tfoot>
+            </table>
+        </div>
+
+
+
+        <h3 align="center">Vehicle Status</h3>
+
+
+        <div class="table">
+            <table class="table table-striped">
+                <thead>
+                    <tr id="header">
+
+                        <th>Make</th>
+                        <th>Model</th>
+                        <th>Colour</th>
+                        <th>Registration number</th>
+                        <th>Status</th>
+                        <!--<th>Actions</th>-->
+                    </tr>
+                </thead>
+                <tbody id="mytable">
+                    <tr *ngFor="let Vehicle of Vehicles">
+                        <td>{{Vehicle.Make}}</td>
+                        <td>{{Vehicle.Model}}</td>
+                        <td>{{Vehicle.Colour}}</td>
+                        <td>{{Vehicle.Redgistration}}</td>
+                        <td>{{Vehicle.Status}}</td>
+
+                        <!--Moenie die code verander nie. Sit net nuwe kollomme bo dit in-->
+
+                    </tr>
+                </tbody>
+
+
+                <tfoot style="background-color:rgba(205, 21, 67);">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>Total Active Vehicles : {{Count2}}</td>
+                </tfoot>
+            </table>
+        </div>
+        <h6 align="center">**END OF REPORT**</h6>
+    </div>
+</div>

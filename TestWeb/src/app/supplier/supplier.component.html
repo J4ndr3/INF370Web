@@ -1,0 +1,135 @@
+<h1>Supplier</h1>
+<hr class="hrow" />
+
+<div class="outer">
+
+    <div class="button">
+        <button type="button" class="btn btn-default btn-sm" id="addBTN" data-toggle="collapse" data-target="#demo"> <span data-toggle="tooltip" data-placement="top" title="Click to add new"> ADD NEW
+      <img src="/assets/ios-add.svg" class="plus" style="background-color: rgb(134,158,195) " /></span></button>
+    </div>
+
+    <div class="search">
+        <form action="/action_page.php" id="searchform">
+            <div class="input-group">
+                <input type="text" [(ngModel)]="searchText" class="form-control" placeholder="Search..." name="search" id="SearchBTN" data-toggle="tooltip" data-placement="top" title="Type to search"><button class="btn btn-default" type="submit" id="Search"><img src="/assets/ios-search.svg" class="SearchbtnIMG" /></button>
+            </div>
+        </form>
+    </div>
+</div>
+<br>
+<br>
+
+
+
+<div class="inner collapse" id="demo">
+    <div class="close">
+        <button class="btn btn-default btn-sm" id="closeBTN" data-toggle="collapse" data-target="#demo"><span data-toggle="tooltip" data-placement="top" title="Close">
+      <img src="/assets/ios-close.svg" class="closePic" /></span></button>
+    </div>
+
+    <div class="inputForm">
+        <br>
+        <form class="form-horizontal" id="modifyForm" [formGroup]="AddForm" (ngSubmit)="addSupplier()">
+
+            <div class="form-group">
+                <h2 class="Header">Add Supplier</h2>
+                <br>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="desc" placeholder="Supplier Name..." name="desc" formControlName="Name" maxlength="50" required>
+
+                </div>
+
+                <div class="col-sm-10">
+                    <input type="tel" class="form-control" id="desc" placeholder="Cellphone Number..." name="desc" formControlName="Contact" maxlength="10" required>
+
+                </div>
+
+                <div class="col-sm-10">
+                    <input type="email" class="form-control" id="desc" placeholder="Email Address..." name="desc" formControlName="Email" maxlength="50" required>
+
+                </div>
+
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="desc" placeholder="Address..." name="desc" formControlName="Address" maxlength="60" required>
+
+                </div>
+            </div>
+
+            <!--Moenie die save button verander nie-->
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10" id="savediv">
+                    <button type="submit" class="btn btn-default" id="Save" data-toggle="collapse" data-target="#demo"><span data-toggle="tooltip" data-placement="top" title="Click to save"> Save </span></button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <br>
+    <br>
+</div>
+<!--TABLE-->
+<br>
+
+<div class="table">
+    <table class="table table-striped">
+        <thead>
+            <tr id="header">
+                <th>Supplier Name</th>
+                <th>Cellphone</th>
+                <th>Email</th>
+                <th>Address</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let Supplier of Suppliers |filter: searchText">
+                <td innerHTML="{{Supplier.Name | highlight :searchText}}"></td>
+                <td innerHTML="{{Supplier.Contact | highlight :searchText}}"></td>
+                <td innerHTML="{{Supplier.Email | highlight :searchText}}"></td>
+                <td innerHTML="{{Supplier.Address | highlight :searchText}}"></td>
+
+
+
+
+                <!--Moenie die code verander nie. Sit net nuwe kollomme bo dit in-->
+                <td> <button class="btn btn-default btn-sm" (click)="edit(Supplier.ID)" id="editbtn" routerLink='/modify-supplier' data-toggle="tooltip" data-placement="top" title="Modify"><img src="/assets/ios-create.svg"
+              class="edit" /></button><button (click)="delete(Supplier.ID)" class="btn btn-default btn-sm" id="editbtn" data-toggle="tooltip" data-placement="top" title="Remove"><img
+              src="/assets/ios-trash.svg" class="edit" /></button></td>
+            </tr>
+        </tbody>
+    </table>
+
+
+</div>
+<a hidden data-toggle="modal" data-target="#Delmodal" id="del"></a>
+<!-- Modal- Moenie verander nie. uncomment net die modal vir input error as die duplicate entry message gebruik moet word. Gaan later dit koppel aan waar dit moet wees. -->
+<div class="modal fade" id="Delmodal" data-backdrop="static" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" style="text-align: left !important;"><img src="/assets/ios-alert.svg" style="width:40px; margin-top:0px;" />Warning</h4>
+                <button type="button" class="close " data-dismiss="modal " style="float:right !important; ">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>This record will be permanently deleted. Are you sure you want to continue?</p>
+                <button type="button" class="btn btn-default" data-dismiss="modal" style="float: right !important;" id="modalClose" (click)="del()">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--comment en uncomment net om screenshots van die verskillende error messages te kry-->
+<div class="modal fade" id="myModal" data-backdrop="static" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" style="text-align: left !important;"><img src="/assets/ios-alert.svg" style="width:40px; margin-top:0px;" />Error</h4>
+                <button type="button" class="close" data-dismiss="modal" style="float:right !important;">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>This record already exists. Please try again</p>
+                <button type="button" class="btn btn-default" data-dismiss="modal" style="float: right !important;" id="modalClose">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,1074 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+@import url("https://fonts.googleapis.com/css?family=Montserrat:500,700");
+@import "~bootstrap/dist/css/bootstrap.css";
+@import '~ngx-toastr/toastr.css';
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins';
+@import '~ngx-toastr/toastr-bs4-alert';
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+@import '~@fullcalendar/core/main.css';
+@import '~@fullcalendar/daygrid/main.css';
+@import '~@fullcalendar/timegrid/main.css';
+@import url('https://use.fontawesome.com/releases/v5.0.6/css/all.css');
+@import url('https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css');
+.login {
+    background-image: url(/assets/LOGIN_PAGE.jpg) no-repeat;
+    background-size: 100% 50%;
+}
+
+#regForm {
+    background-color: rgba(62, 105, 112, 0.7)!important;
+    margin: 100px auto;
+    padding: 40px;
+    width: 70%;
+    min-width: 300px;
+}
+
+
+/* Hide all steps by default: */
+
+.tab {
+    display: none;
+}
+
+#nextBtn {
+    background-color: rgb(134, 158, 195) !important;
+    color: rgb(0, 24, 26);
+    border: none;
+    padding: 10px 20px;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+#nextBtn:hover {
+    opacity: 0.8;
+}
+
+#prevBtn {
+    background-color: #bbbbbb;
+}
+
+
+/* Make circles that indicate the steps of the form: */
+
+.step {
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbbbbb;
+    border: none;
+    border-radius: 50%;
+    display: inline-block;
+    opacity: 0.5;
+}
+
+.step.active {
+    opacity: 1;
+}
+
+
+/* Mark the steps that are finished and valid: */
+
+.step.finish {
+    background-color: rgba(62, 105, 112, 0.7);
+    color: white;
+}
+
+.app-top {
+    margin: 0 0 3em;
+}
+
+.app-calendar {
+    margin: 0 auto;
+    max-width: 80%;
+    background-color: rgba(62, 105, 112, 0.9);
+    height: auto;
+    font-size: 80%;
+}
+
+#forgot {
+    color: rgb(205, 21, 67);
+}
+
+body {
+    background-color: rgb(207, 209, 211);
+    font-family: Montserrat;
+    padding-top: 75px;
+}
+
+.float {
+    float: right;
+}
+
+.f {
+    float: Left;
+    margin: 0 0 0 50px;
+}
+
+.f1 {
+    float: Right;
+    margin: 0 50px 0 0;
+}
+
+.float-r {
+    float: left;
+}
+
+.headers {
+    background-color: rgb(62, 105, 112);
+}
+
+.white {
+    color: white;
+}
+
+#resolvedbtn {
+    background-color: rgb(205, 21, 67);
+    color: white;
+}
+
+.panels {
+    width: 80%;
+    margin: auto;
+}
+
+.footer {
+    left: 0;
+    width: 100%;
+    margin-bottom: 0%;
+    position: static;
+}
+
+nav {
+    background-color: rgb(0, 24, 26);
+    height: 80px;
+    width: 100% !important;
+}
+
+.nav-item {
+    text-align: center;
+    color: white;
+    height: 80px;
+}
+
+#left {
+    float: left;
+    width: 80%;
+}
+
+.nav-link {
+    color: white;
+    text-align: center;
+    padding-top: 30px;
+    margin-top: 0px;
+}
+
+.plus {
+    width: 40px;
+    height: 40px;
+}
+
+.navbar-nav {
+    padding-left: 5%;
+}
+
+.navbar-brand {
+    background-color: rgb(0, 24, 26);
+    padding-top: 0%;
+    margin-top: 0%;
+    width: 80px;
+    margin-left: 1%;
+}
+
+#logo {
+    height: 60px !important;
+    margin-right: 0% !important;
+}
+
+.nav-link:hover {
+    color: white;
+    background-color: rgb(62, 105, 112);
+    height: 100%;
+    padding-top: 30px;
+    margin-top: 0px;
+}
+
+.dropdown-item:hover {
+    color: white !important;
+    background-color: rgba(0, 24, 26, 0.4);
+}
+
+.dropdown-item {
+    color: white !important;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+#navbardrop:hover {
+    background-color: rgba(126, 206, 208, 0.2);
+    height: 80px;
+}
+
+.dropdown-menu {
+    background-color: rgba(0, 24, 26, 0.7);
+}
+
+#right {
+    height: 80px;
+    margin-right: 0px !important;
+    right: 0 !important;
+    float: right;
+    width: 15%;
+}
+
+.Logout {
+    right: 0;
+    float: right;
+    height: 80px;
+    background-color: rgb(205, 21, 67);
+    border: none;
+    width: 100%;
+}
+
+.search {
+    float: left !important;
+    width: 50%;
+    font-size: 100%;
+}
+
+#SearchBTN {
+    margin-top: 2.5%;
+    width: 80%;
+    height: 80%;
+    margin-bottom: 0%;
+    margin-left: 0%;
+}
+
+#SearchBTN::-webkit-input-placeholder {
+    color: rgba(0, 24, 26, 0.7) !important;
+}
+
+#Search {
+    margin-top: 1.5%;
+    width: 10%;
+    height: 100%;
+    margin-left: 0%;
+}
+
+.searchBtnIMG {
+    height: 100%;
+}
+
+#Search:hover {
+    border: 2px solid rgb(207, 209, 211);
+}
+
+h1 {
+    text-align: center;
+    color: black;
+    font-display: Montserrat bold;
+    margin-top: 30px;
+}
+
+.ngx-text-highlight{
+    background:yellow;
+}
+.outer {
+    margin: auto;
+    margin-top: 0px !important;
+    width: 80%;
+    padding: 0px !important;
+    margin-bottom: 4%;
+    background-color: rgba(62, 105, 112, 0.7)!important;
+}
+
+#listdiv{
+overflow-y: scroll;
+}
+
+.table {
+    margin: auto;
+    width: 80%;
+    background-color: rgba(62, 105, 112, 0.7)!important;
+    padding: 0px;
+    margin-bottom: 4%;
+}
+
+table {
+    color: white;
+    width: 100% !important;
+    border-bottom: 1px solid;
+    border-color: rgba(0, 24, 26, 0.3) !important;
+}
+
+td {
+    text-align: center;
+    color: white !important;
+    font-display: Montserrat;
+    border-bottom: 1px solid;
+    border-color: gray !important;
+}
+
+th {
+    color: white !important;
+    text-align: center;
+    border-bottom: 1px solid;
+    border-color: rgb(0, 24, 26) !important;
+}
+
+.table-striped>tbody>tr:nth-child(odd)>td,
+.table-striped>tbody>tr:nth-child(odd)>th {
+    background-color: rgba(207, 209, 211, 0.75) !important;
+}
+
+.button {
+    float: right;
+    margin-right: 0px;
+    padding-right: 0px;
+}
+
+#addBTN {
+    width: 140px;
+    text-align: left;
+    color: rgb(0, 24, 26);
+    font-size: 100%;
+    height: 60px;
+    margin-right: 0px;
+    padding-right: 0px;
+}
+
+#addBTN:hover {
+    width: 142px;
+    border: 1px solid lightgrey;
+    height: 60px;
+    margin-right: 0px;
+    padding-right: 0px;
+}
+
+.inner {
+    width: 80%;
+    margin: auto;
+    background-color: rgba(62, 105, 112, 0.7)!important;
+}
+
+.close {
+    width: 60px;
+    height: 60px;
+    float: left;
+}
+
+.back {
+    width: 80px;
+    float: left;
+}
+
+#closeBTN {
+    width: 60px;
+    height: 60px;
+    float: left;
+}
+
+#closeBTN:hover {
+    border: 3px solid rgba(157, 209, 218, 0);
+}
+
+#backBTN {
+    width: 100%;
+}
+
+#editbtn {
+    width: 25px;
+    height: 25px;
+    margin-top: 0px;
+    padding-top: 0px;
+}
+
+#editbtn:active {
+    outline: none;
+}
+
+.edit {
+    width: 25px;
+    height: 25px;
+    margin-top: 0px;
+    padding-top: 0px;
+}
+
+.edit:hover {
+    border: 1px solid rgba(62, 105, 112, 0);
+}
+
+.closePic {
+    fill: white;
+    color: white;
+}
+
+h2 {
+    font-size: 150%;
+    color: white;
+    margin-left: 13%;
+}
+
+.col-sm-10 {
+    margin-left: 0%;
+    width: 80%;
+    margin: auto;
+    margin-bottom: 2%;
+}
+
+input,
+textarea {
+    background-color: rgba(0, 24, 26, 0.2) !important;
+    color: white !important;
+    border-color: rgba(207, 209, 211, 0.7) !important;
+}
+
+.checkboxes {
+    background-color: rgba(0, 24, 26, 0.0) !important;
+    color: white !important;
+    border: 2px solid rgba(126, 206, 208, 0.0) !important;
+}
+
+input:-ms-input-placeholder {
+    color: rgba(227, 231, 237, 0.8) !important;
+}
+
+input::-webkit-input-placeholder {
+    color: rgba(227, 231, 237, 0.8)!important;
+}
+
+input:-moz-placeholder {
+    /* Firefox 18- */
+    color: rgba(227, 231, 237, 0.8)!important;
+}
+
+input::-moz-placeholder {
+    /* Firefox 19+ */
+    color: rgba(227, 231, 237, 0.8) !important;
+}
+
+textarea::-moz-placeholder {
+    color: rgba(227, 231, 237, 0.8) !important;
+}
+
+textarea::-ms-input-placeholder {
+    color: rgba(227, 231, 237, 0.8) !important;
+}
+
+textarea::-webkit-input-placeholder {
+    color: rgba(227, 231, 237, 0.8) !important;
+}
+
+#Select1 {
+    background-color: rgba(0, 24, 26, 0.2) !important;
+    color: rgba(227, 231, 237, 0.8) !important;
+    border-color: rgba(207, 209, 211, 0.7) !important;
+}
+
+option {
+    background-color: rgb(62, 105, 112) !important;
+}
+
+#Select2 {
+    background-color: rgba(0, 24, 26, 0.2) !important;
+    color: rgba(227, 231, 237, 0.8) !important;
+    border-color: rgba(207, 209, 211, 0.7) !important;
+}
+
+#Save {
+    background-color: rgb(134, 158, 195) !important;
+    color: rgb(0, 24, 26);
+    font-size: 110%;
+    margin-right: 0px;
+    float: right;
+    border-color: rgb(0, 24, 26);
+}
+
+#Save:hover {
+    border: 1px solid lightgray;
+}
+
+#modifyForm {
+    height: 100%;
+    width: 50%;
+    margin: auto;
+}
+
+#searchForm {
+    height: 100%;
+}
+
+.modal-dialog {
+    width: 300% !important;
+}
+
+#modalClose:hover {
+    border: 1px solid lightgrey;
+}
+
+#mapDiv {
+    width: 100%;
+    height: 500px;
+}
+
+#Map {
+    width: 100%;
+    height: 100%;
+    border-top: 10px solid rgb(134, 158, 195);
+    border-bottom: 10px solid rgb(134, 158, 195);
+}
+
+#homearrow {
+    margin: auto;
+    height: 5%;
+    width: 5%;
+}
+
+#downbtn {
+    height: 100%;
+    width: 100%;
+    background-color: inherit;
+}
+
+.custom-modal-header {
+    text-align: center;
+    color: #17b6bb;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-top: 4px solid;
+}
+
+.modal-title {
+    font-size: 18px;
+    color: rgb(62, 105, 112);
+}
+
+.form-group {
+    margin-bottom: 15px !important;
+}
+
+.media {
+    width: 97% !important;
+    border-left: 6px solid rgb(205, 21, 67) !important;
+    background-color: rgba(62, 105, 112, 0.3) !important;
+    margin: auto;
+    border-right: 2px solid rgba(62, 105, 112, 0.3) !important;
+    border-top: 2px solid rgba(62, 105, 112, 0.3) !important;
+    border-bottom: 2px solid rgba(62, 105, 112, 0.3) !important;
+}
+
+#chartdiv {
+    width: 100%;
+    height: 500px;
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+
+/* You can add global styles to this file, and also import other style files */
+
+.media {
+    width: 97% !important;
+    border-left: 6px solid rgb(205, 21, 67) !important;
+    background-color: rgba(62, 105, 112, 0.3) !important;
+    margin: auto;
+    border-right: 2px solid rgba(62, 105, 112, 0.3) !important;
+    border-top: 2px solid rgba(62, 105, 112, 0.3) !important;
+    border-bottom: 2px solid rgba(62, 105, 112, 0.3) !important;
+}
+
+
+/* Hide all steps by default: */
+
+#nextBtn {
+    background-color: rgb(134, 158, 195) !important;
+    color: rgb(0, 24, 26);
+    border: none;
+    padding: 10px 20px;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+#nextBtn:hover {
+    opacity: 0.8;
+}
+
+#prevBtn {
+    background-color: #bbbbbb;
+    color: rgb(0, 24, 26);
+    border: none;
+    padding: 10px 20px;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+
+/* Make circles that indicate the steps of the form: */
+
+.step {
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbbbbb;
+    border: none;
+    border-radius: 50%;
+    display: inline-block;
+    opacity: 0.5;
+}
+
+.step.active {
+    opacity: 1;
+}
+
+
+/* Mark the steps that are finished and valid: */
+
+.step.finish {
+    background-color: rgba(62, 105, 112, 0.7);
+    color: white;
+}
+
+.app-top {
+    margin: 0 0 3em;
+}
+
+#forgot {
+    color: rgb(205, 21, 67);
+}
+
+.cal {
+    width: 90%;
+    margin: auto;
+}
+
+.float {
+    float: right;
+}
+
+.float-r {
+    float: left;
+}
+
+.headers {
+    background-color: rgb(62, 105, 112);
+}
+
+.white {
+    color: white;
+}
+
+#resolvedbtn {
+    background-color: rgb(205, 21, 67);
+    color: white;
+}
+
+.panels {
+    width: 80%;
+    margin: auto;
+}
+
+.footer {
+    left: 0;
+    width: 100% !important;
+    bottom: 0;
+    position: static;
+}
+
+.hrow {
+    background-color: rgb(205, 21, 67);
+    height: 2px;
+    width: 70%;
+    margin-bottom: 2% !important;
+}
+
+hr {
+    width: 100%;
+}
+
+nav {
+    background-color: rgb(0, 24, 26);
+    height: 80px;
+    width: 100% !important;
+}
+
+.nav-item {
+    text-align: center;
+    color: white;
+    height: 80px;
+}
+
+#left {
+    float: left;
+    width: 80%;
+}
+
+.nav-link {
+    color: white;
+    text-align: center;
+    padding-top: 30px;
+    margin-top: 0px;
+}
+
+.plus {
+    width: 40px;
+    height: 40px;
+}
+
+.navbar-nav {
+    padding-left: 5%;
+}
+
+.navbar-brand {
+    background-color: rgb(0, 24, 26);
+    padding-top: 0%;
+    margin-top: 0%;
+    width: 80px;
+    margin-left: 1%;
+}
+
+#logo {
+    height: 60px !important;
+    margin-right: 0% !important;
+}
+
+.nav-link:hover {
+    color: white;
+    background-color: rgb(62, 105, 112);
+    height: 100%;
+    padding-top: 30px;
+    margin-top: 0px;
+}
+
+.dropdown-item:hover {
+    color: white !important;
+    background-color: rgba(0, 24, 26, 0.4);
+}
+
+.dropdown-item {
+    color: white !important;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+#navbardrop:hover {
+    background-color: rgba(126, 206, 208, 0.2);
+    height: 80px;
+}
+
+.dropdown-menu {
+    background-color: rgba(0, 24, 26, 0.7);
+}
+
+#right {
+    height: 80px;
+    margin-right: 0px !important;
+    right: 0 !important;
+    float: right;
+    width: 15%;
+}
+
+.Logout {
+    right: 0;
+    float: right;
+    height: 80px;
+    background-color: rgb(205, 21, 67);
+    border: none;
+    width: 100%;
+}
+
+.search {
+    float: left !important;
+    width: 50%;
+    font-size: 100%;
+}
+
+#SearchBTN {
+    margin-top: 2.5%;
+    width: 80%;
+    height: 80%;
+    margin-bottom: 0%;
+    margin-left: 0%;
+}
+
+#SearchBTN::-webkit-input-placeholder {
+    color: rgba(0, 24, 26, 0.7) !important;
+}
+
+#Search {
+    margin-top: 1.5%;
+    width: 10%;
+    height: 100%;
+    margin-left: 0%;
+}
+
+.searchBtnIMG {
+    height: 100%;
+}
+
+#Search:hover {
+    border: 2px solid rgb(207, 209, 211);
+}
+
+h1 {
+    text-align: center;
+    color: black;
+    font-display: Montserrat bold;
+}
+
+.outer {
+    margin: auto;
+    margin-top: 0px;
+    width: 80%;
+    padding: 0px;
+    margin-bottom: 4%;
+    background-color: rgba(62, 105, 112, 0.7)!important;
+}
+
+.table {
+    margin: auto;
+    width: 80%;
+    background-color: rgba(62, 105, 112, 0.7)!important;
+    padding: 0px;
+    margin-bottom: 4%;
+}
+
+table {
+    color: white;
+    width: 100% !important;
+    border-bottom: 1px solid;
+    border-color: rgba(0, 24, 26, 0.3) !important;
+}
+
+td {
+    text-align: center;
+    color: white !important;
+    font-display: Montserrat;
+    border-bottom: 1px solid;
+    border-color: gray !important;
+}
+
+th {
+    color: white !important;
+    text-align: center;
+    border-bottom: 1px solid;
+    border-color: rgb(0, 24, 26) !important;
+}
+
+.table-striped>tbody>tr:nth-child(odd)>td,
+.table-striped>tbody>tr:nth-child(odd)>th {
+    background-color: rgba(207, 209, 211, 0.75) !important;
+}
+
+.button {
+    float: right;
+    margin-right: 0px;
+    padding-right: 0px;
+}
+
+#addBTN {
+    width: 140px;
+    text-align: left;
+    color: rgb(0, 24, 26);
+    font-size: 100%;
+    height: 60px;
+    margin-right: 0px;
+    padding-right: 0px;
+}
+
+#addBTN:hover {
+    width: 142px;
+    border: 1px solid lightgrey;
+    height: 60px;
+    margin-right: 0px;
+    padding-right: 0px;
+}
+
+.inner {
+    width: 80%;
+    margin: auto;
+    background-color: rgba(62, 105, 112, 0.7)!important;
+}
+
+.close {
+    width: 60px;
+    height: 60px;
+    float: left;
+}
+
+.back {
+    width: 80px;
+    float: left;
+}
+
+#closeBTN {
+    width: 60px;
+    height: 60px;
+    float: left;
+}
+
+#closeBTN:hover {
+    border: 3px solid rgba(157, 209, 218, 0);
+}
+
+#backBTN {
+    width: 100%;
+}
+
+#editbtn {
+    width: 25px;
+    height: 25px;
+    margin-top: 0px;
+    padding-top: 0px;
+}
+
+.step.active {
+    opacity: 1;
+}
+
+
+/* Mark the steps that are finished and valid: */
+
+.step.finish {
+    background-color: rgba(62, 105, 112, 0.7);
+    color: white;
+}
+
+.app-top {
+    margin: 0 0 3em;
+}
+
+.fc-today {
+    background: rgba(207, 209, 211, 0.5) !important;
+    border: none !important;
+    border-top: 1px solid #ddd !important;
+    font-weight: bold;
+}
+
+.fc-event {
+    background-color: rgb(78, 150, 161) !important;
+    border: none !important;
+    text-align: left !important;
+}
+
+.fc-more-popover {
+    height: 200px !important;
+    // max-height: 30%;
+    overflow-y: scroll;
+}
+
+.fc {
+    direction: ltr;
+    text-align: left !important;
+}
+
+.fc-event-time,
+.fc-event-title {
+    padding: 0 1px;
+    text-align: left !important;
+}
+
+.login {
+    width: 60%;
+    margin: auto;
+    background-color: rgba(62, 105, 112, 0.2)!important;
+}
+
+.border-lable-flt {
+    display: block;
+    position: relative;
+}
+
+.border-lable-flt label,
+.border-lable-flt>span {
+    position: absolute;
+    left: 0;
+    top: 0;
+    cursor: text;
+    color: rgba(227, 231, 237, 0.8);
+    font-size: 100%;
+    opacity: 1;
+    -webkit-transition: all .2s;
+    transition: all .2s;
+    top: -.5em;
+    left: 1.75rem;
+    z-index: 3;
+    line-height: 1;
+    padding: 0 1px;
+}
+
+.border-lable-flt label::after,
+.border-lable-flt>span::after {
+    content: " ";
+    display: block;
+    position: absolute;
+    color: rgba(227, 231, 237, 0.8);
+    background: rgb(86, 114, 118);
+    height: 1px;
+    top: 50%;
+    left: -.2em;
+    right: -.2em;
+    z-index: -2;
+}
+
+.border-lable-flt .form-control::-webkit-input-placeholder {
+    opacity: 1;
+    -webkit-transition: all .2s;
+    transition: all .2s;
+}
+
+.border-lable-flt .form-control:placeholder-shown:not(:focus)::-webkit-input-placeholder {
+    opacity: 0;
+}
+
+.border-lable-flt .form-control:placeholder-shown:not(:focus)+* {
+    font-size: 100%;
+    opacity: .5;
+    top: .7em;
+}
+
+.input-group .border-lable-flt {
+    display: table-cell;
+}
+
+.input-group .border-lable-flt .form-control {
+    border-radius: 0.25rem;
+}
+
+.input-group .border-lable-flt:not(:last-child),
+.input-group .border-lable-flt:not(:last-child) .form-control {
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+    border-right: 0;
+}
+
+.input-group .border-lable-flt:not(:first-child),
+.input-group .border-lable-flt:not(:first-child) .form-control {
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+}
+
+.gm-style div {
+    color: #fff !important;
+    font-weight: bold;
+}
+
+.ngx-text-highlight {
+    background: yellow;
+}
+
+mark {
+    // background: rgba(205, 21, 67, 0.4);
+    background: rgba(205, 21, 67, 0.5);
+}

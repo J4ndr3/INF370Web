@@ -1,0 +1,96 @@
+<h1>
+    MODIFY VEHICLE</h1>
+<hr class="hrow" />
+<br>
+
+<div class="inner">
+    <div class="back">
+        <button class="btn btn-default btn-sm" id="backBTN" routerLink="/vehicle" data-toggle="tooltip" data-placement="top" title="Back">
+        <img src="/assets/ios-arrow-round-back.svg" class="BackBTN" /></button>
+    </div>
+    <br>
+    <form class="form-horizontal" id="modifyForm" [formGroup]="EditForm" (ngSubmit)="update()">
+        <div class="form-group">
+            <h2 class="Header">Vehicle Information:</h2>
+            <br>
+            <input type="text" class="form-control" id="Cell" formControlName="ID" hidden required>
+            <div class="form-group">
+                <div class="col-sm-10">
+                    <select class="form-control" formControlName="Model" id="Select1" onchange="selectColor()" required data-toggle="tooltip" data-placement="top" title="Model">
+                        <option disabled  [value]="" style="color:white">Model...</option>
+                        <option *ngFor="let item of ModelOptions" [(value)]="item.Model_ID">{{item.Model}} {{item.Year}}
+                        </option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-10">
+                    <select class="form-control" formControlName="Type" id="Select1" onchange="selectColor()" required data-toggle="tooltip" data-placement="top" title="Type">
+                        <option disabled  [value]="" style="color:white">Type...</option>
+                        <option *ngFor="let item of TypeOptions" [(value)]="item.Vehicle_Type_ID">
+                            {{item.Type_Description}}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-10">
+                    <select class="form-control" id="Select1" formControlName="Colour" onchange="selectColor()" required data-toggle="tooltip" data-placement="top" title="Colour">
+                        <option disabled  [value]="" style="color:white">Colour...</option>
+                        <option>Red</option>
+                        <option>White</option>
+                        <option>Black</option>
+                        <option>Green</option>
+                        <option>Blue</option>
+                        <option>Silver</option>
+                        <option>Pink</option>
+                        <option>Purple</option>
+                        <option>Yellow</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="Cell" formControlName="Registration" placeholder="Registration Number..." name="Cell" maxlength="10" required data-toggle="tooltip" data-placement="top" title="Registration Number">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-10">
+                    <select class="form-control" id="Select1" formControlName="Status" onchange="selectColor()" required data-toggle="tooltip" data-placement="top" title="Status">
+                        <option disabled  [value]="" style="color:white">Status...</option>
+                        <option  value="true">Active</option>
+                        <option  value="false">Inactive</option>
+                        </select>
+                </div>
+            </div>
+
+            <!--Moenie die save button verander nie-->
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10" id="savediv">
+                    <button type="submit" class="btn btn-default" id="Save" data-toggle="tooltip" data-placement="top" title="Click to save">Save</button>
+                </div>
+            </div>
+        </div>
+    </form><br><br>
+
+</div>
+
+
+<div class="modal fade" id="myModal" role="dialog" data-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" style="text-align: left !important;"><img src="/assets/ios-alert.svg" style="width:40px; margin-top:0px;" />Error</h4>
+                <button type="button" class="close" data-dismiss="modal" style="float:right !important;">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>The input provided is incorrect. Please try again.</p>
+                <button type="button" class="btn btn-default" data-dismiss="modal" style="float: right !important;" id="modalClose">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<br><br><br>

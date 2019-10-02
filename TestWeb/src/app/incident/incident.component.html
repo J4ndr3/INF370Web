@@ -1,0 +1,39 @@
+
+<h1>INCIDENTS</h1>
+<hr class="hrow"/>
+<br>
+
+<div class='panels' >
+    <div *ngFor="let Item of Incident" class="panel-group ">
+        <mdb-card class="mb-3" borderColor="black">
+          <mdb-card-header  class="headers" >
+          <h5 class="white">{{Item.Type}}</h5> <p class="white"><small class="text-white float"><i>Reported on {{Item.Date}} {{Item.Time}} by {{Item.Name}} {{Item.Surname}}</i></small></p>
+          <p class="white"><small class="text-white float-r"><i>{{Item.Level}} Severity Level</i></small></p>
+          </mdb-card-header> 
+            <mdb-card-body>
+              <mdb-card-text>{{Item.Description}} <button class="btn btn-default float" id="resolvedbtn" (click)="Resolve(Item.ID)" data-toggle="tooltip" data-placement="top" title="Click to resolve">Resolved</button></mdb-card-text>
+              <p><a routerLink="/home" data-toggle="tooltip" data-placement="top" title="Show on map">View location</a></p>
+            </mdb-card-body>
+          </mdb-card>
+          
+</div>
+<div class='panels'>
+  <div *ngIf = "empty" class="panel-group ">
+      <mdb-card class="mb-3" borderColor="black">
+        <mdb-card-header  class="headers" >
+        <h5 class="white">No Incidents</h5>
+        </mdb-card-header> 
+          <mdb-card-body>
+            <mdb-card-text>There are currently no reported incidents!</mdb-card-text>
+            <p><a routerLink="/home">Return to Home screen</a></p>
+          </mdb-card-body>
+        </mdb-card>
+        
+</div>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>

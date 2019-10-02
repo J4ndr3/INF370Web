@@ -1,0 +1,54 @@
+<h1>
+    RANGERS ON DUTY</h1>
+<hr class="hrow" />
+<br>
+<div id="mapDiv" style="width:80%; margin:auto;">
+    <div #map style="width:80%;height:100%; float:left "></div>
+    <div style="width:20%; height:100%; Float:right; background-color: rgba(62, 105, 112, 0.9)">
+        <div id="listdiv" style="height:100%; Float:right;">
+            <p style="margin:auto; color:white; text-align: center; font-size:130% ">Patrol information</p>
+            <br>
+            <div *ngFor="let item of RangerList">
+                <p style="margin-left:3%; color:white;">{{item.Name}} {{item.Surname}}:</p>
+                <ul>
+                    <li style="color:white;">Checkin time: {{item.Checkin}}</li>
+                    <li style="color:white;">Passenger: {{item.PassName}} {{item.PassSurname}}</li>
+                </ul>
+                <hr>
+
+            </div>
+        </div>
+    </div>
+    <!-- <img src="/assets/Map.PNG" id="Map"/> -->
+</div>
+
+<br>
+<div>
+    <h1>BOOKINGS</h1>
+    <hr class="hrow" />
+</div>
+<div class='app-calendar'>
+    <full-calendar #calendar defaultView="dayGridMonth" [header]="{
+  left: 'prev,next today',
+  center: 'title',
+  right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+}" [plugins]="calendarPlugins" [weekends]="calendarWeekends" [events]="calendarEvents" [nowIndicator]="true" [eventStartEditable]="true" [eventDurationEditable]="true" [displayEventTime]="true" [displayEventEnd]="true" [eventLimit]='4' (eventClick)="eventClick($event)"></full-calendar>
+</div>
+<br>
+<!-- [eventLimitClick]="popover" -->
+<a hidden data-toggle="modal" data-target="#info" id="info1"></a>
+<div class="modal fade" id="info" data-backdrop="static" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" style="text-align: left !important;"><img src="/assets/ios-alert.svg" style="width:40px; margin-top:0px;" />Shift booking:</h4>
+                <button type="button" class="close" data-dismiss="modal" style="float:right !important;">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p style="padding-bottom:1%">Ranger: {{Name}}<br> Passenger: {{Passenger}}<br> Start: {{start}}<br> End: {{end}}<br> Date: {{Date}}<br> Reserve: {{Reserve}}<br> Registration: {{Registration}}</p>
+
+                <button type="button" class="btn btn-default" data-dismiss="modal" style="float: right !important;" id="modalClose">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

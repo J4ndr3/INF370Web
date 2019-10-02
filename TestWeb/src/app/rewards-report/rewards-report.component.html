@@ -1,0 +1,135 @@
+<h1>
+    REWARDS REPORT</h1>
+<hr class="hrow" />
+<div align="center">
+    <div class="col">
+        <div ngbDropdown>
+            <button class="btn btn-outline-secondary" id="dropdownBasic1" ngbDropdownToggle data-toggle="tooltip" data-placement="top" title="Choose Type">Select Reward Type</button>
+            <div ngbDropdownMenu style="background-color:rgba(62, 105, 112)">
+                <button data-toggle="collapse" data-target="#demo" ngbDropdownItem>Product Reward</button>
+                <button data-toggle="collapse" data-target="#demo1" ngbDropdownItem>Event Reward</button>
+
+            </div>
+        </div>
+    </div>
+    <br>
+</div>
+
+
+<div class="collapse" id="demo">
+    <h3 align="center">Product Reward</h3>
+
+    <div class="outer">
+        <div class="button">
+            <button type="submit" class="btn btn-default" id="Save" routerLink="/download-rewards" data-toggle="collapse" data-target="#demo"><span data-toggle="tooltip" data-placement="top" title="Click to download"> PDF </span></button>
+        </div>
+        <!--Moenie buttons en search bar verander nie-->
+
+    </div>
+
+    <div id="content" #content>
+        <div id="contentToConvert">
+            <div id="chrt1" align="center"></div>
+            <div class="table">
+                <table class="table table-striped">
+                    <thead>
+                        <tr id="header">
+
+                            <th style="text-align: left;">Product Name</th>
+                            <th style="text-align: right;">Quantity</th>
+                            <th style="text-align: right;">Points required</th>
+                            <th style="text-align: left;">Description</th>
+
+
+                            <!--<th>Actions</th>-->
+                        </tr>
+                    </thead>
+                    <tbody id="mytable">
+                        <tr *ngFor="let Product of Products">
+                            <td style="text-align: left;">{{Product.PName}}</td>
+                            <td style="text-align: right;">{{Product.PQuantity}}</td>
+                            <td style="text-align: right;">{{Product.PPoints}}</td>
+                            <td style="text-align: left;">{{Product.PDescription}}</td>
+
+                            <!--Moenie die code verander nie. Sit net nuwe kollomme bo dit in-->
+
+                        </tr>
+                    </tbody>
+
+
+                    <tfoot style="background-color:rgba(205, 21, 67);">
+
+                        <td></td>
+                        <td style="text-align: right;">Product Rewards</td>
+                        <td>:</td>
+                        <td>{{Count}}</td>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+
+<div class="collapse" id="demo1">
+    <h3 align="center">Event Reward</h3>
+    <div class="outer">
+        <div class="button">
+            <button type="submit" class="btn btn-default" id="Save" routerLink="/download-rewards" data-toggle="collapse" data-target="#demo"><span data-toggle="tooltip" data-placement="top" title="Click to download">Download PDF</span></button>
+        </div>
+        <!--Moenie buttons en search bar verander nie-->
+
+    </div>
+    <div id="content" #content>
+        <div id="contentToConvert">
+            <div class="table">
+                <table class="table table-striped">
+                    <thead>
+                        <tr id="header">
+
+                            <th style="text-align: left;">Event Name</th>
+                            <th style="text-align: left;">Date</th>
+                            <th style="text-align: right;">Points required</th>
+                            <th style="text-align: left;">Description</th>
+
+
+                            <!--<th>Actions</th>-->
+                        </tr>
+                    </thead>
+                    <tbody id="mytable">
+                        <tr *ngFor="let Event of Events">
+                            <td style="text-align: left;">{{Event.EName}}</td>
+                            <td style="text-align: left;">{{Event.EDate}}</td>
+                            <td style="text-align: right;">{{Event.EPoints}}</td>
+                            <td style="text-align: left;">{{Event.EDescription}}</td>
+
+                            <!--Moenie die code verander nie. Sit net nuwe kollomme bo dit in-->
+
+                        </tr>
+                    </tbody>
+
+                    <tfoot style="background-color:rgba(205, 21, 67);">
+
+                        <td></td>
+                        <td style="text-align: left;">Event Rewards</td>
+                        <td>:</td>
+                        <td style="text-align: left;">{{EventCount}}</td>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div>
+    <div class="table">
+        <table class="table table-striped">
+            <tfoot style="background-color:rgba(205, 21, 67);">
+                <td></td>
+                <td style="text-align: left;">Total Rewards</td>
+                <td>:</td>
+                <td style="text-align: left;">{{TotalCount}}</td>
+            </tfoot>
+        </table>
+
+    </div>
+</div>

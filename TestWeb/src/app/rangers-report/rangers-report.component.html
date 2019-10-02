@@ -1,0 +1,47 @@
+<h1>
+    RANGER REPORT</h1>
+<br>
+<hr class="hrow" />
+<div class="outer">
+    <div class="button">
+        <button type="submit" class="btn btn-default" id="Save" (click)="Download()" data-toggle="collapse" data-target="#demo"><span data-toggle="tooltip" data-placement="top" title="Click to download">Download PDF</span></button>
+    </div>
+    <!--Moenie buttons en search bar verander nie-->
+
+</div>
+
+<br>
+<div id="content" #content>
+    <div id="contentToConvert">
+        <div id="chrt1" align="center"></div>
+        <div class="table">
+            <table class="table table-striped">
+                <thead>
+                    <tr id="header">
+                        <th style="text-align: left;">Name</th>
+                        <th style="text-align: left;">Surname</th>
+                        <th style="text-align: left;">Cellphone</th>
+                        <th style="text-align: right;">Points</th>
+                        <th style="text-align: left;">Status</th>
+
+                        <!--<th>Actions</th>-->
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let Ranger of Rangers">
+                        <td style="text-align: left;">{{Ranger.Name}}</td>
+                        <td style="text-align: left;">{{Ranger.Surname}}</td>
+                        <td style="text-align: left;">{{Ranger.Cell}}</td>
+                        <td style="text-align: right;">{{Ranger.Points}}</td>
+                        <td style="text-align: left;">{{Ranger.Status}}</td>
+                        <!--Moenie die code verander nie. Sit net nuwe kollomme bo dit in-->
+
+                    </tr>
+                </tbody>
+
+            </table>
+
+        </div>
+        <div id="chrt2" align="center"></div>
+    </div>
+</div>

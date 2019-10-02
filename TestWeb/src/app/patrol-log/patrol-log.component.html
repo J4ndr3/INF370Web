@@ -1,0 +1,53 @@
+<h1>PATROL LOG</h1>
+<hr class="hrow" />
+
+<div id="mapDiv">
+    <div #map style="width:80%;height:100%; margin: auto;"></div>
+    <!-- <img src="/assets/Map.PNG" id="Map"/> -->
+</div>
+
+<div class="outer">
+    <!--Moenie buttons en search bar verander nie-->
+    <div class="search">
+        <div class="input-group">
+            <input type="text" class="form-control" [(ngModel)]="searchText" placeholder="Search..." name="search" id="SearchBTN" data-toggle="tooltip" data-placement="top" title="Type to search"><button class="btn btn-default" type="submit" id="Search"><img src="/assets/ios-search.svg" class="SearchbtnIMG" /></button>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<div class="table">
+    <table class="table table-striped">
+        <thead>
+            <tr id="header">
+                <th>Ranger</th>
+                <th>Date</th>
+                <th>Check-in Time</th>
+                <th>Check-out Time</th>
+                <th>Total time</th>
+                <th>Feedback</th>
+                <th>Route</th>
+                <th>Markers passed</th>
+                <th>Points scored</th>
+                <!-- <th>Information</th> -->
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let patrol of Patrol | filter:searchText">
+                <td innerHTML="{{patrol.Name| highlight :searchText}} {{patrol.Surname| highlight :searchText}}"></td>
+                <td innerHTML="{{patrol.Date| highlight :searchText}}"></td>
+                <td innerHTML="{{patrol.Checkin| highlight :searchText}}"></td>
+                <td innerHTML="{{patrol.Checkout| highlight :searchText}}"></td>
+                <td innerHTML="{{patrol.time| highlight :searchText}}"></td>
+                <td innerHTML="{{patrol.Feedback| highlight :searchText}}"></td>
+                <!--Moenie die code verander nie. Sit net nuwe kollomme bo dit in-->
+                <td> <button class="btn btn-default" style="border:none" (click)="DrawRoute(patrol.Patrol_Log_ID)" data-toggle="tooltip" data-placement="top" title="Click to draw on map">Draw Route</button></td>
+                <td innerHTML="{{patrol.MarkerPast| highlight :searchText}}"></td>
+                <td innerHTML="{{patrol.Points| highlight :searchText}}"></td>
+            </tr>
+        </tbody>
+    </table>
+
+
+</div>
+<!-- Modal- Moenie verander nie. uncomment net die modal vir input error as die duplicate entry message gebruik moet word. Gaan later dit koppel aan waar dit moet wees. -->

@@ -1,0 +1,17 @@
+
+<h1>NOTIFICATIONS</h1>
+<hr class="hrow"/>
+<br/>
+<br/>
+
+<div class="media border p-3" *ngFor="let item of Notification" style="margin-bottom:10px;">
+
+  <img src="https://conceptdraw.com/a155c4/p127/preview/640/pict--notification-cloud-round-icons-vector-stencils-library" alt="Notification icon" class="mr-3 mt-3 rounded-circle" style="width:80px;">
+  <div class="media-body">
+    <h4 style="border-bottom: 2px solid gray; width:100%; padding-bottom:5px;"> {{item.Ranger}}  <small><i>Posted on {{item.Date}}</i></small></h4>
+    <h5>{{item.Title}}</h5>
+    <p>{{item.Message}}</p>
+  </div>
+  </div>
+
+

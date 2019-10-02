@@ -1,0 +1,272 @@
+<!--NAVIGATION BAR - MOENIE verander nie-->
+<nav class="navbar navbar-expand-sm fixed-top" *ngIf="showme">
+    <!-- logo -->
+    <div class="container-fluid">
+        <a class="navbar-brand " routerLink="/">
+            <img src="/assets/logo_ERP-03.png" alt="ERP logo" id="logo">
+        </a>
+        <!-- Links -->
+        <div id="left">
+            <ul class="navbar-nav navbar-left">
+                <li class="nav-item dropdown"><a class="nav-link" routerLink="/">HOME</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown"> USER</a>
+                    <div class="dropdown-menu">
+                        <a routerLink="/registeruser" class="dropdown-item">- Register User</a>
+                        <a routerLink="/userrole" class="dropdown-item">- User Roles</a>
+                        <a routerLink="/vehicle" class="dropdown-item">- Vehicles</a>
+                        <a routerLink="/rangers" class="dropdown-item">- Rangers</a>
+                    </div>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">REPORTS</a>
+                    <div class="dropdown-menu">
+                        <a routerLink="/performance" class="dropdown-item">- Performance</a>
+                        <a routerLink="/incident-report" class="dropdown-item">- Incident</a>
+                        <a routerLink="/vehicles-report" class="dropdown-item">- Vehicles</a>
+                        <a routerLink="/assets-report" class="dropdown-item">- Assets</a>
+                        <a routerLink="/rewards-report" class="dropdown-item">- Rewards</a>
+                        <a routerLink="/status-report" class="dropdown-item">- Status</a>
+                        <a routerLink="/rangers-report" class="dropdown-item">- Rangers</a>
+                        <a routerLink="/markers-report" class="dropdown-item">- Markers</a>
+                    </div>
+                </li>
+                <!--   -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+        ASSETS
+    </a>
+                    <div class="dropdown-menu">
+                        <a routerLink="/order" class="dropdown-item">- Order</a>
+                        <a routerLink="/supplier" class="dropdown-item">- Supplier</a>
+                        <a routerLink="/asset" class="dropdown-item">- Asset</a>
+
+
+                    </div>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+        REWARDS
+      </a>
+                    <div class="dropdown-menu">
+                        <a routerLink="/reward-add" class="dropdown-item">- Reward</a>
+                        <a routerLink="/event-type" class="dropdown-item">- Event Type</a>
+                        <a routerLink="/product-type" class="dropdown-item">- Product Type</a>
+                    </div>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+        NOTIFICATIONS
+      </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" data-toggle="modal" data-target="#messagepopup">- Capture Message</a>
+                        <a class="dropdown-item" routerLink="/notify">- Notifications</a>
+                        <a routerLink="incident-type" class="dropdown-item">- Incident Type</a>
+                        <a routerLink="/incident-level" class="dropdown-item">- Incident Level</a>
+                    </div>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+        RESERVE
+      </a>
+                    <div class="dropdown-menu">
+                        <a routerLink="/gate" class="dropdown-item">- Gates</a>
+                        <a routerLink="/security" class="dropdown-item">- Security</a>
+                        <a routerLink="/reserve" class="dropdown-item">- Reserves</a>
+                    </div>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+        PATROL
+      </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" routerLink="/patrol">- Patrol Log</a>
+                        <a routerLink="/marker" class="dropdown-item">- Marker</a>
+                        <a routerLink="/markertype" class="dropdown-item">- Marker Type</a>
+
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink='/incident'>INCIDENTS
+         <span class="badge badge-light">{{count}}</span>
+        </a>
+                </li>
+                <br>
+            </ul>
+        </div>
+        <div id="right">
+            <div class="dropdown Logout" id="logoutbutton">
+                <a class="nav-link dropdown-toggle" href="#" id="logoutbutton" data-toggle="dropdown">
+                    {{rangerName}}
+      </a>
+                <div class="dropdown-menu">
+                    <!-- <a class="dropdown-item" routerLink="/profile">- Profile</a>
+                    <a class="dropdown-item" (click)="showToast()">- Help</a> -->
+                    <a class="dropdown-item" id="Out" data-toggle="modal" data-target="#myModal">- Logout</a>
+                    <a class="dropdown-item" id="Out" data-toggle="modal" data-target="#timerpopup">- Settings</a>
+                    <a class="dropdown-item" routerLink='/audit'>- Audit</a>
+                    <a class="dropdown-item" >- Help</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+
+<div class="modal fade" id="messagepopup" role="dialog" data-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header custom-modal-header">
+                <h4 class="modal-title" style="text-align: left !important;">Capture Message</h4>
+                <button type="button" class="close" data-dismiss="modal" style="float:right !important;">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="AddForm">
+                    <label>Please complete the following fields:</label>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="TitleInput" formControlName="Title" maxlength="50" placeholder="Title..." required style="background-color: rgba(62,105,112,0.7)!important; color:white;">
+                    </div>
+
+                    <div class="form-group">
+                        <textarea class="form-control" id="Message" formControlName="Message" maxlength="200" placeholder="Message..." style="background-color: rgba(62,105,112,0.7)!important;" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-default" style="float: right !important;" (click)="openSnackBar()" mat-button data-dismiss="modal" id="modalClose">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="timerpopup" role="dialog" data-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header custom-modal-header">
+                <h4 class="modal-title" style="text-align: left !important;">Change Timer</h4>
+                <button type="button" class="close" data-dismiss="modal" style="float:right !important;">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="EditForm">
+                    <label>Customise time until group message is sent:</label>
+                    <div class="form-group">
+                        <input type="number" class="form-control" id="Level" formControlName="Timer" maxlength="50" min="0" placeholder="Duration..." required style="background-color: rgba(62,105,112,0.7)!important; color:white;">
+                        <input type="number" hidden formControlName="ID">
+                    </div>
+                    <button type="submit" class="btn btn-default" style="float: right !important;" (click)="update()" mat-button data-dismiss="modal" id="modalClose">Save</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="myModal" data-backdrop="static" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" style="text-align: left !important;"><img src="/assets/ios-alert.svg" style="width:40px; margin-top:0px;" />Logout</h4>
+                <button type="button" class="close" data-dismiss="modal" style="float:right !important;">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to Logout?</p>
+                <button type="button" class="btn btn-default" data-dismiss="modal" style="float: left !important;" id="modalClose">Cancel</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal" style="float: right !important;" id="modalClose" (click)="Logout()">Confirm</button>
+            </div>
+        </div>
+    </div>
+</div>
+<a hidden data-toggle="modal" data-target="#editmessage" id="mymodClick"></a>
+
+<div class="modal fade" id="editmessage" role="dialog" data-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header custom-modal-header">
+                <h4 class="modal-title" style="text-align: left !important;">Modify Message</h4>
+                <button type="button" class="close" data-dismiss="modal" style="float:right !important;">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="AddForm2">
+                    <label>Please complete the following fields:</label>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="TitleInput" maxlength="50" formControlName="Title" placeholder="Title..." required style="background-color: rgba(62,105,112,0.7)!important; color:white;">
+                    </div>
+
+                    <div class="form-group">
+                        <textarea class="form-control" id="Message" formControlName="Message" maxlength="200" placeholder="Message..." style="background-color: rgba(62,105,112,0.7)!important;" required></textarea>
+                    </div>
+                    <button class="btn btn-default btn-sm" style="float:left !important"><img
+                        src="/assets/ios-trash copy.svg" style="height:30px !important;" /></button>
+                    <button type="submit" class="btn btn-default" style="float: right !important;" mat-button (click)="openSnackBar1()" data-dismiss="modal" id="modalClose">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- modal for general error -->
+<a hidden data-toggle="modal" data-target="#genErr" id="generalMod"></a>
+<div class="modal fade" id="genErr" data-backdrop="static" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" style="text-align: left !important;"><img src="/assets/ios-alert.svg" style="width:40px; margin-top:0px;" />Error</h4>
+                <button type="button" class="close" data-dismiss="modal" style="float:right !important;">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Unexpected error has occured please try again later!</p>
+                <button type="button" class="btn btn-default" data-dismiss="modal" style="float: right !important;" id="modalClose">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<a hidden data-toggle="modal" data-target="#duplicate" id="dup"></a>
+<div class="modal fade" id="duplicate" data-backdrop="static" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" style="text-align: left !important;"><img src="/assets/ios-alert.svg" style="width:40px; margin-top:0px;" />Error</h4>
+                <button type="button" class="close" data-dismiss="modal" style="float:right !important;">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>This record already exists. Please try again</p>
+                <button type="button" class="btn btn-default" data-dismiss="modal" style="float: right !important;" id="modalClose">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<a hidden data-toggle="modal" data-target="#inErr" id="inputErr"></a>
+<div class="modal fade" id="inErr" data-backdrop="static" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" style="text-align: left !important;"><img src="/assets/ios-alert.svg" style="width:40px; margin-top:0px;" />Error</h4>
+                <button type="button" class="close" data-dismiss="modal" style="float:right !important;">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Input provided is invalid. Please try again.</p>
+                <button type="button" class="btn btn-default" data-dismiss="modal" style="float: right !important;" id="modalClose">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<a hidden data-toggle="modal" data-target="#delNo" id="delErr"></a>
+<div class="modal fade" id="delNo" data-backdrop="static" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" style="text-align: left !important;"><img src="/assets/ios-alert.svg" style="width:40px; margin-top:0px;" />Error</h4>
+                <button type="button" class="close" data-dismiss="modal" style="float:right !important;">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>The record you are trying to delete is used by other records in the databse and can not be deleted.</p>
+                <button type="button" class="btn btn-default" data-dismiss="modal" style="float: right !important;" id="modalClose">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

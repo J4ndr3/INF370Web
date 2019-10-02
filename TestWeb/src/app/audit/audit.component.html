@@ -1,0 +1,42 @@
+<h1>AUDIT LOG</h1>
+<hr class="hrow" />
+<div class="outer">
+    <div class="search">
+        <form action="/action_page.php" id="searchform">
+            <div class="input-group">
+                <input type="text" [(ngModel)]="searchtext" autocomplete="off" class="form-control" placeholder="Search..." name="search" id="SearchBTN" data-toggle="tooltip" data-placement="top" title="Click to search"><button class="btn btn-default" type="submit" id="Search"><img src="/assets/ios-search.svg" class="SearchbtnIMG" /></button>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="outer">
+    <div class="button">
+        <button type="submit" class="btn btn-default" id="Save" (click)="downloadRequest()" data-toggle="collapse" data-target="#demo"><span data-toggle="tooltip" data-placement="top" title="Click to download">Download Excel</span></button>
+    </div>
+    <!--Moenie buttons en search bar verander nie-->
+
+</div>
+<br>
+<br>
+<div class="table">
+    <table class="table table-striped">
+        <thead>
+            <tr id="header">
+                <th style="text-align: left;">Audit ID</th>
+                <th style="text-align: left;">Date</th>
+                <th style="text-align: left;">User</th>
+                <th style="text-align: left;">Transaction Type</th>
+                <th style="text-align: left;">Details</th>
+            </tr>
+        </thead>
+        <tbody id="mytable">
+            <tr *ngFor="let Audit of Audits|filter:searchtext">
+                <td style="text-align: left;">{{Audit.Audit_ID}}</td>
+                <td style="text-align: left;">{{Audit.Date}}</td>
+                <td style="text-align: left;">{{Audit.Ranger}}</td>
+                <td style="text-align: left;">{{Audit.Type}}</td>
+                <td style="text-align: left;">{{Audit.Critical}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,93 @@
+<!--Verander opskrif vir elke page-->
+
+<h1>RANGERS</h1>
+<hr class="hrow" />
+
+<div class="outer">
+    <!--Moenie buttons en search bar verander nie-->
+    <div class="button">
+        <button type="button" class="btn btn-default btn-sm" id="addBTN" routerLink="/registeruser"> <span data-toggle="tooltip" data-placement="top" title="Click to add new">ADD NEW
+      <img src="/assets/ios-add.svg" class="plus" style="background-color: rgb(134,158,195) " /> </span> </button>
+    </div>
+
+    <div class="search">
+        <form action="/action_page.php" id="searchform">
+            <div class="input-group">
+                <input type="text" [(ngModel)]="searchtext" class="form-control" placeholder="Search..." name="search" id="SearchBTN" data-toggle="tooltip" data-placement="top" title="Type to search"><button class="btn btn-default" type="submit" id="Search"><img src="/assets/ios-search.svg" class="SearchbtnIMG" /></button>
+            </div>
+        </form>
+    </div>
+</div>
+<br>
+<br>
+
+
+<!--TABLE-->
+<br>
+
+<div class="table">
+    <table class="table table-striped">
+        <thead>
+            <tr id="header">
+                <th>Ranger</th>
+                <th>Roles</th>
+                <th>Email</th>
+                <th>Cellphone</th>
+                <th>ID</th>
+                <th>Status</th>
+                <th>Points</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let Ranger of Rangers |filter:searchtext">
+                <td innerHTML="{{Ranger.Name | highlight :searchtext}} {{Ranger.Surname | highlight :searchtext}}"></td>
+                <td innerHTML="{{Ranger.User_Role | highlight :searchtext}}"></td>
+                <td innerHTML="{{Ranger.Email | highlight :searchtext}}"></td>
+                <td innerHTML="{{Ranger.Cell | highlight :searchtext}}"></td>
+                <td innerHTML="{{Ranger.RID | highlight :searchtext}}"></td>
+                <td innerHTML="{{Ranger.Status | highlight :searchtext}}"></td>
+                <td innerHTML="{{Ranger.Points | highlight :searchtext}}"></td>
+                <!--Moenie die code verander nie. Sit net nuwe kollomme bo dit in-->
+                <td> <button class="btn btn-default btn-sm" id="editbtn" (click)="edit(Ranger.ID)" data-toggle="tooltip" data-placement="top" title="Modify"><img src="/assets/ios-create.svg"
+              class="edit" /></button><button class="btn btn-default btn-sm" id="editbtn" (click)="delete(Ranger.ID)" data-toggle="tooltip" data-placement="top" title="Remove" ><img
+              src="/assets/ios-trash.svg" class="edit" /></button><button class="btn btn-default btn-sm" id="editbtn" data-toggle="tooltip" data-placement="top" title="View"><img
+                src="/assets/ios-eye.svg" class="edit" style="filter: invert(1)" (click)="view(Ranger.ID)"/></button></td>
+            </tr>
+        </tbody>
+    </table>
+
+
+</div>
+<a hidden data-toggle="modal" data-target="#Delmodal" id="del"></a>
+<!-- Modal- Moenie verander nie. uncomment net die modal vir input error as die duplicate entry message gebruik moet word. Gaan later dit koppel aan waar dit moet wees. -->
+<div class="modal fade" id="Delmodal" data-backdrop="static" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" style="text-align: left !important;"><img src="/assets/ios-alert.svg" style="width:40px; margin-top:0px;" />Warning</h4>
+                <button type="button" class="close " data-dismiss="modal" style="float:right !important; ">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>This record will be permanently deleted. Are you sure you want to continue?</p>
+                <button type="button" class="btn btn-default" data-dismiss="modal" style="float: right !important;" id="modalClose" (click)="del()">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--comment en uncomment net om screenshots van die verskillende error messages te kry-->
+<div class="modal fade" id="myModal" data-backdrop="static" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" style="text-align: left !important;"><img src="/assets/ios-alert.svg" style="width:40px; margin-top:0px;" />Error</h4>
+                <button type="button" class="close" data-dismiss="modal" style="float:right !important;">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>This record already exists. Please try again</p>
+                <button type="button" class="btn btn-default" data-dismiss="modal" style="float: right !important;" id="modalClose">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

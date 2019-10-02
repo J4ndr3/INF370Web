@@ -1,0 +1,161 @@
+<h1>
+    MARKER</h1>
+<hr class="hrow" />
+<br/>
+<div id="mapDiv">
+    <div #map style="width:80%;height:100%; margin: auto;"></div>
+    <!-- <img src="/assets/Map.PNG" id="Map"/> -->
+</div>
+<div class="outer">
+    <!--Moenie buttons en search bar verander nie-->
+    <div class="button">
+        <button type="button" class="btn btn-default btn-sm" id="addBTN" data-toggle="collapse" data-target="#demo"><span data-toggle="tooltip" data-placement="top" title="Click to add new">ADD NEW
+      <img src="/assets/ios-add.svg" class="plus" style="background-color: rgb(134,158,195) " /></span></button>
+    </div>
+
+    <div class="search">
+        <form action="/action_page.php" id="searchform">
+            <div class="input-group">
+                <input type="text" class="form-control" [(ngModel)]="searchtext" placeholder="Search..." name="search" id="SearchBTN" data-toggle="tooltip" data-placement="top" title="Type to search"><button class="btn btn-default" type="submit" id="Search"><img src="/assets/ios-search.svg" class="SearchbtnIMG" /></button>
+            </div>
+        </form>
+    </div>
+</div>
+<br>
+
+
+<!--Moenie die button verander nie-->
+<div class="inner collapse" id="demo">
+    <div class="close">
+        <button class="btn btn-default btn-sm" id="closeBTN" data-toggle="collapse" data-target="#demo"><span data-toggle="tooltip" data-placement="top" title="Close">
+      <img src="/assets/ios-close.svg" class="closePic" /></span></button>
+    </div>
+
+    <!--Verander opskrif en input vir elke page. placeholder formaat moet dieselfe wees. -->
+    <!--As ander tipe input gebruik word, maak seker hulle volg dieselfde formaat as die ander inputs(donker agtergrond, blou placeholder, wit skrif wat ingetik word (code in die style.scss file)-->
+    <div class="inputForm">
+        <br>
+        <form class="form-horizontal" id="modifyForm" [formGroup]="AddForm" (ngSubmit)="add()">
+
+            <div class="form-group">
+
+                <h2 class="Header">Add Marker</h2>
+                <br>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="Level" formControlName="Discription" placeholder="Marker Description..." name="Level" required>
+                </div>
+                <div class="col-sm-10">
+                    <select formControlName="Reserve" [(value)]="ReserveSelection" class="form-control" id="Select1" onchange="selectColor()" required>
+                                <option hidden [value]=""  selected>Reserve...</option>
+                                <option *ngFor="let opt of ReserveOptions" [(value)]="opt.ID">{{opt.Name}}</option>
+                              </select>
+                </div>
+                <div class="col-sm-10">
+                    <select class="form-control" formControlName="Type" id="Select1" onchange="selectColor()" required>
+                          <option hidden [value]=""  selected>Marker Type...</option>
+                          <option *ngFor="let opt of MarkerTypeOptions" [(value)]="opt.Marker_Type_ID">{{opt.Type}}</option>
+                        </select>
+                </div>
+                <div class="col-sm-10">
+                    <select class="form-control" formControlName="Status" id="Select1" onchange="selectColor()" required>
+                              <option selected  hidden [value]="">Status...</option>
+                              <option>Active</option>
+                              <option>Inactive</option>
+                            </select>
+                </div>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="Level" formControlName="Lattitude" placeholder="Latitude ..." name="Level" maxlength="10" required>
+                </div>
+    
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" formControlName="Longitude" id="Level" placeholder="Longitude..." name="Level" maxlength="9" required>
+                </div>
+            </div>
+
+            <!--Moenie die save button verander nie-->
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10" id="savediv">
+                    <button type="submit" class="btn btn-default" id="Save" data-toggle="collapse" data-target="#demo"><span data-toggle="tooltip" data-placement="top" title="Click to save">Save </span></button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <br>
+    <br>
+</div>
+<!--TABLE-->
+<br>
+
+<div class="table">
+    <table class="table table-striped">
+        <thead>
+            <tr id="header">
+                <th style="text-align: left;">Marker Description</th>
+                <th style="text-align: left;">Reserve</th>
+                <th style="text-align: left;">Type</th>
+                <th style="text-align: left;">Last Modified</th>
+                <th style="text-align: left;">Status</th>
+                <th style="text-align: left;">Latitude</th>
+                <th style="text-align: left;">Longitude</th>
+                <th style="text-align: left;">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let Marker of Markers |filter:searchtext">
+                <td style="text-align: left;" innerHTML="{{Marker.Description| highlight :searchtext}}"></td>
+                <td style="text-align: left;" innerHTML="{{Marker.Reserve| highlight :searchtext}}"></td>
+                <td style="text-align: left;" innerHTML="{{Marker.Type| highlight :searchtext}}"></td>
+                <td style="text-align: left;" innerHTML="{{Marker.Date| highlight :searchtext}}"></td>
+                <td style="text-align: left;" innerHTML="{{Marker.Status| highlight :searchtext}}"></td>
+                <td style="text-align: left;" innerHTML="{{Marker.Lat| highlight :searchtext}}"></td>
+                <td style="text-align: left;" innerHTML="{{Marker.Long| highlight :searchtext}}"></td>
+                <!--Moenie die code verander nie. Sit net nuwe kollomme bo dit in-->
+                <td> <button class="btn btn-default btn-sm" id="editbtn" (click)="edit(Marker.Num)" data-toggle="tooltip" data-placement="top" title="Modify"><img src="/assets/ios-create.svg"
+              class="edit" /></button><button class="btn btn-default btn-sm" id="editbtn" (click)="delete(Marker.Num)" data-toggle="tooltip" data-placement="top" title="Remove"><img
+              src="/assets/ios-trash.svg" class="edit" /></button>
+            </tr>
+            <!-- <tr>
+                <td style="text-align: left;">Marker next to high risk fence</td>
+                <td style="text-align: left;">Rietvallei</td>
+                <td style="text-align: left;">Meduim</td>
+                <td style="text-align: left;">24/06/2019</td>
+                <td style="text-align: left;">Active</td>
+                <td style="text-align: left;">-25.0477</td>
+                <td style="text-align: left;">-13.5558</td>
+                <td> <button class="btn btn-default btn-sm" id="editbtn"><img src="/assets/ios-create.svg"
+              class="edit" /></button><button class="btn btn-default btn-sm" id="editbtn"><img
+              src="/assets/ios-trash.svg" class="edit" /></button>
+            </tr>
+            <tr>
+                <td style="text-align: left;">Close to dam</td>
+                <td style="text-align: left;">Rietvallei</td>
+                <td style="text-align: left;">Meduim</td>
+                <td style="text-align: left;">24/06/2019</td>
+                <td style="text-align: left;">Active</td>
+                <td style="text-align: left;">-19.2256</td>
+                <td style="text-align: left;">-19.3333</td>
+                <td> <button class="btn btn-default btn-sm" id="editbtn"><img src="/assets/ios-create.svg"
+              class="edit" /></button><button class="btn btn-default btn-sm" id="editbtn"><img
+              src="/assets/ios-trash.svg" class="edit" /></button>
+            </tr> -->
+        </tbody>
+    </table>
+
+
+</div>
+<a hidden data-toggle="modal" data-target="#Delmodal" id="del"></a>
+<!-- Modal- Moenie verander nie. uncomment net die modal vir input error as die duplicate entry message gebruik moet word. Gaan later dit koppel aan waar dit moet wees. -->
+<div class="modal fade" id="Delmodal" data-backdrop="static" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" style="text-align: left !important;"><img src="/assets/ios-alert.svg" style="width:40px; margin-top:0px;" />Warning</h4>
+                <button type="button" class="close" data-dismiss="modal" style="float:right !important;">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>This record will be permanently deleted. Are you sure you want to continue?</p>
+                <button type="button" class="btn btn-default" data-dismiss="modal" style="float: right !important;" id="modalClose">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>

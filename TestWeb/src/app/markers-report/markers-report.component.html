@@ -1,0 +1,77 @@
+<br>
+<h1>MARKER REPORT</h1>
+<hr class="hrow" />
+<br>
+
+<div style="background-color: rgba(205, 21, 67,0.15);width:80%;height:95%; margin:auto">
+    <h3 align="center">Active Markers</h3>
+</div>
+<div id="my-node">
+    <div id="mapDiv">
+        <div #map style="width:80%;height:100%; margin: auto;"></div>
+        <!-- <img src="/assets/Map.PNG" id="Map"/> -->
+    </div>
+</div>
+
+
+<br>
+<hr class="hrow" />
+<div class="outer">
+    <div class="button">
+        <button type="submit" class="btn btn-default" id="Save" (click)="Download()" data-toggle="collapse" data-target="#demo"><span data-toggle="tooltip" data-placement="top" title="Click to download">Download PDF </span></button>
+    </div>
+    <!--Moenie buttons en search bar verander nie-->
+
+</div>
+
+
+<div id="content" #content>
+    <div id="contentToConvert">
+        <div id="chrt1" align="center"><br></div>
+
+        <div id="image1234" #img style="width:80%; margin: auto; " align="center"></div>
+
+        <div id="chrt3"></div>
+        <br>
+        <div class="table">
+            <table class="table table-striped">
+                <thead>
+                    <tr id="header">
+                        <th style="text-align: right;">Marker No</th>
+                        <th style="text-align: right;">Latitude</th>
+                        <th style="text-align: right;">Longitude</th>
+                        <th style="text-align: right;">Date Modified</th>
+                        <th style="text-align: left;">Status</th>
+                        <th style="text-align: right;">Points Worth</th>
+                        <!--<th>Actions</th>-->
+                    </tr>
+                </thead>
+                <tr *ngFor="let Marker of Markers">
+                    <td style="text-align: right;">{{Marker.Num}}</td>
+                    <td style="text-align: right;">{{Marker.Lat}}</td>
+                    <td style="text-align: right;">{{Marker.Long}}</td>
+                    <td style="text-align: right;">{{Marker.Date}}</td>
+                    <td style="text-align: left;">{{Marker.Status}}</td>
+                    <td style="text-align: right;">{{Marker.Points}}</td>
+
+
+                    <!--Moenie die code verander nie. Sit net nuwe kollomme bo dit in-->
+
+                </tr>
+                </tbody>
+
+                <tfoot style="background-color:rgba(205, 21, 67);">
+                    <td>Total: {{markerCount}}</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td style="text-align: left;">Markers Active: {{markerActiveCount}}</td>
+                    <td></td>
+                </tfoot>
+            </table>
+        </div>
+        <div id="chrt2" align="center"></div>
+
+    </div>
+
+</div>

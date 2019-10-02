@@ -1,0 +1,62 @@
+<br>
+<br>
+<h1>MODIFY PRODUCT REWARD</h1>
+<hr class="hrow" />
+<br>
+
+<div style="background-color: rgba(62, 105, 112, 0.7);width: 80%; margin:auto">
+    <div class="back">
+        <button class="btn btn-default btn-sm" id="backBTN" routerLink="/reward-add" data-toggle="tooltip" data-placement="top" title="Back">
+            <img src="/assets/ios-arrow-round-back.svg" class="BackBTN" /></button>
+    </div>
+    <br>
+    <form class="form-horizontal" [formGroup]="EditForm" id="modifyForm" (ngSubmit)="update()">
+        <h2 class="Header">Product Reward Information:</h2>
+        <div class="form-group">
+
+            <br>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" formControlName="PID" hidden required>
+                <input type="text" class="form-control" id="Level" placeholder="Product Name..." name="PName" formControlName="PName" maxlength="50" required data-toggle="tooltip" data-placement="top" title="Product Name">
+                <br>
+                <input type="text" class="form-control" id="Level" placeholder="Quantity..." name="PQuantity" formControlName="PQuantity" required data-toggle="tooltip" data-placement="top" title="Quantity">
+                <br>
+                <input type="text" class="form-control" id="Level" placeholder="Points Required..." name="PPoints" formControlName="PPoints" required data-toggle="tooltip" data-placement="top" title="Points Required">
+                <br>
+
+                <select formControlName="PDescription" [(value)]="RewardSelection" class="form-control" id="Select1" onchange="selectColor()" required data-toggle="tooltip" data-placement="top" title="Type Product">
+                    <option selected disabled hidden value="Type Product...">Type Product...</option>
+                    <option *ngFor="let opt of RewardOptions" [(value)]="opt.ID">{{opt.Description}}</option>
+                </select>
+
+
+            </div>
+            <br>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10" id="savediv">
+                    <button type="submit" class="btn btn-default" id="Save" data-toggle="tooltip" data-placement="top" title="Click to save">Save</button>
+                </div>
+                <br>
+                <br>
+            </div>
+        </div>
+    </form>
+    <br>
+</div>
+<div class="modal fade" id="myModal" role="dialog" data-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" style="text-align: left !important;"><img src="/assets/ios-alert.svg" style="width:40px; margin-top:0px;" />Error</h4>
+                <button type="button" class="close" data-dismiss="modal" style="float:right !important;">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>The input provided is incorrect. Please try again.</p>
+                <button type="button" class="btn btn-default" data-dismiss="modal" style="float: right !important;" id="modalClose">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<br>

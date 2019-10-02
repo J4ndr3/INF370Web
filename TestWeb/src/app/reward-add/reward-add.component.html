@@ -1,0 +1,292 @@
+<br>
+<h1>REWARDS</h1>
+<hr class="hrow" />
+<!--Moenie buttons en search bar verander nie-->
+<div align="center">
+    <div ngbDropdown>
+        <button class="btn btn-outline-secondary" id="dropdownBasic1" ngbDropdownToggle data-toggle="tooltip" data-placement="top" title="Choose Reward Type">Select Reward Type</button>
+        <div ngbDropdownMenu style="background-color:rgba(62, 105, 112);">
+            <button data-toggle="collapse" data-target="#demo1" ngbDropdownItem>Product Reward</button>
+            <button data-toggle="collapse" data-target="#demo2" ngbDropdownItem>Event Reward</button>
+
+        </div>
+    </div>
+</div>
+<br>
+<div class=" collapse" id="demo1">
+    <h3 align=" center ">Product Rewards</h3>
+
+    <div class="outer">
+        <div class="button">
+            <button type="button" class="btn btn-default btn-sm" id="addBTN" data-toggle="collapse" data-target="#demo3"> <span data-toggle="tooltip" data-placement="top" title="Click to add new">ADD NEW
+                      <img src="/assets/ios-add.svg" class="plus" style="background-color: rgb(134,158,195) " /></span></button>
+        </div>
+        <!--Moenie buttons en search bar verander nie-->
+        <div class="search">
+            <form action="/action_page.php" id="searchform">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search..." name="search" [(ngModel)]="searchText" id="SearchBTN" data-toggle="tooltip" data-placement="top" title="Type to search"><button class="btn btn-default" type="submit" id="Search"><img src="/assets/ios-search.svg" class="SearchbtnIMG" /></button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+    <br>
+
+
+    <!--TABLE-->
+    <div>
+
+        <div>
+            <div class="inner collapse" id="demo3">
+                <div class="close">
+                    <button class="btn btn-default btn-sm" id="closeBTN" data-toggle="collapse" data-target="#demo3"><span data-toggle="tooltip" data-placement="top" title="Close">
+                      <img src="/assets/ios-close.svg" class="closePic" /></span></button>
+                </div>
+
+                <!--Verander opskrif en input vir elke page. placeholder formaat moet dieselfe wees. -->
+                <!--As ander tipe input gebruik word, maak seker hulle volg dieselfde formaat as die ander inputs(donker agtergrond, blou placeholder, wit skrif wat ingetik word (code in die style.scss file)-->
+                <div class="inputForm">
+                    <br>
+
+                    <form class="form-horizontal" id="modifyForm" [formGroup]="AddForm" (ngSubmit)="addRewardAdd()">
+
+                        <div class="form-group">
+                            <h2 class="Header">Add Product Reward</h2>
+                            <br>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="Level" placeholder="Product Name..." name="PName" formControlName="PName" maxlength="50" required>
+                                <br>
+                                <input type="number" class="form-control" id="Level" placeholder="Quantity..." name="PQuantity" formControlName="PQuantity" required>
+                                <br>
+                                <input type="number" class="form-control" id="Level" placeholder="Points Required..." name="PPoints" formControlName="PPoints" required>
+                                <br>
+
+                                <select formControlName="PDescription" [(value)]="RewardAddSelection" class="form-control" id="Select1" onchange="selectColor()" required>
+                                          <option selected disabled hidden value="Type Product...">Type Product...</option>
+                                          <option *ngFor="let opt of RewardAddOptions" [(value)]="opt.ID">{{opt.Description}}</option>
+                                        </select>
+
+
+                            </div>
+                            <br>
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10" id="savediv">
+                                    <button type="submit" class="btn btn-default" id="Save" data-toggle="collapse" data-target="#demo"><span data-toggle="tooltip" data-placement="top" title="Click to save">Save </span></button>
+                                </div>
+                            </div>
+                            <!--<div class="form-group">
+                                    <div class="col-sm-10">
+                                        <select class="form-control" id="Select1" onchange="selectColor()" required>
+                                          <option selected disabled hidden value="Gender...">Access Level...</option>
+                                          <option>1</option>
+                                          <option>2</option>
+                                          <option>3</option>
+                                        </select>
+                                    </div>
+                                </div>-->
+
+                            <br>
+                        </div>
+
+                        <!--Moenie die save button verander nie-->
+
+                    </form>
+                </div>
+                <br>
+            </div>
+            <br>
+            <div>
+
+                <div class="table">
+                    <table class="table table-striped ">
+                        <thead>
+                            <tr id="header ">
+                                <th style="text-align: left; ">Product Name</th>
+                                <th>Quantity</th>
+                                <th>Points required</th>
+                                <th>Description</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- <div innerHTML="{{ str | highlight :searchText}}"> -->
+                            <tr *ngFor="let RewardAdd of RewardAdds|filter: searchText">
+                                <td innerHTML="{{ RewardAdd.PName | highlight :searchText}}"></td>
+                                <td innerHTML="{{ RewardAdd.PQuantity | highlight :searchText}}"></td>
+                                <td innerHTML="{{ RewardAdd.PPoints | highlight :searchText}}"></td>
+                                <td innerHTML="{{ RewardAdd.PDescription | highlight :searchText}}"></td>
+                                <!--Moenie die code verander nie. Sit net nuwe kollomme bo dit in-->
+                                <td> <button class="btn btn-default btn-sm" id="editbtn" (click)="edit(RewardAdd.PID)" data-toggle="tooltip" data-placement="top" title="Modify"><img src="/assets/ios-create.svg"
+              class="edit"/></button><button class="btn btn-default btn-sm" (click)="delete(RewardAdd.PID)" id="editbtn" data-toggle="tooltip" data-placement="top" title="Remove"><img
+              src="/assets/ios-trash.svg" class="edit" /></button></td>
+                            </tr>
+                            <!-- </div> -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br>
+<div class="collapse" id="demo2">
+    <h3 align=" center ">Event Rewards</h3>
+    <div class="outer">
+        <div class="button">
+            <button type="button" class="btn btn-default btn-sm" id="addBTN" data-toggle="collapse" data-target="#demo"><span data-toggle="tooltip" data-placement="top" title="Click to add new"> ADD NEW
+                                          <img src="/assets/ios-add.svg" class="plus" style="background-color: rgb(134,158,195) " /></span></button>
+        </div>
+        <!--Moenie buttons en search bar verander nie-->
+        <div class="search">
+            <form action="/action_page.php" id="searchform">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search..." name="search" [(ngModel)]="searchText1" id="SearchBTN" data-toggle="tooltip" data-placement="top" title="Type to search"><button class="btn btn-default" type="submit" id="Search"><img src="/assets/ios-search.svg" class="SearchbtnIMG" /></button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+    <br>
+    <div>
+
+        <div>
+
+            <div class="inner collapse" id="demo">
+                <div class="close">
+                    <button class="btn btn-default btn-sm" id="closeBTN" data-toggle="collapse" data-target="#demo"><span data-toggle="tooltip" data-placement="top" title="Close">
+                                  <img src="/assets/ios-close.svg" class="closePic" /></span></button>
+                </div>
+
+                <!--Verander opskrif en input vir elke page. placeholder formaat moet dieselfe wees. -->
+                <!--As ander tipe input gebruik word, maak seker hulle volg dieselfde formaat as die ander inputs(donker agtergrond, blou placeholder, wit skrif wat ingetik word (code in die style.scss file)-->
+                <div class="inputForm">
+                    <br>
+                    <form class="form-horizontal" id="modifyForm" [formGroup]="AddForm1" (ngSubmit)="addEventAdd()">
+
+                        <div class="form-group">
+                            <h2 class="Header">Add Event Reward</h2>
+                            <br>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="Level" placeholder="Event Name..." name="Level" formControlName="EName" maxlength="50" required>
+                                <br>
+                                <input type="number" class="form-control" id="Level" placeholder="Points Worth..." name="Level" formControlName="EPoints" required>
+                                <br>
+                                <input type="date" class="form-control" id="Level" placeholder="Date..." name="Level" formControlName="EDate" required>
+                                <br>
+                                <input type="text" class="form-control" id="Level" placeholder="Address..." name="Level" formControlName="ELocation" maxlength="60" required>
+                                <br>
+                                <select formControlName="EDescription" [(value)]="EventRewardAddSelection" class="form-control" id="Select1" onchange="selectColor()" required>
+                                            <option selected disabled hidden value="Type Event...">Type Event...</option>
+                                            <option *ngFor="let opt of EventRewardAddOptions" [(value)]="opt.ID">{{opt.Description}}</option>
+                                        </select>
+                            </div>
+                            <br>
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10" id="savediv">
+                                    <button type="submit" class="btn btn-default" id="Save" data-toggle="collapse" data-target="#demo"><span data-toggle="tooltip" data-placement="top" title="Click to save">Save</span></button>
+                                </div>
+                            </div>
+                            <!--<div class="form-group">
+                                                <div class="col-sm-10">
+                                                    <select class="form-control" id="Select1" onchange="selectColor()" required>
+                                                      <option selected disabled hidden value="Gender...">Access Level...</option>
+                                                      <option>1</option>
+                                                      <option>2</option>
+                                                      <option>3</option>
+                                                    </select>
+                                                </div>
+                                            </div>-->
+
+
+                        </div>
+                        <br>
+                        <!--Moenie die save button verander nie-->
+
+                    </form>
+                </div>
+                <br>
+            </div>
+            <br>
+            <div class="table">
+                <table class="table table-striped ">
+                    <thead>
+                        <tr id="header ">
+                            <th style="text-align: left; ">Event Name</th>
+                            <th>Points required</th>
+                            <th>Description</th>
+                            <th>Date</th>
+                            <th>Address</th>
+                            <th>Actions</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let EventRewardAdd of EventRewardAdds |filter: searchText1">
+                            <td style="text-align: left; " innerHTML="{{ EventRewardAdd.EName | highlight :searchText1}}"></td>
+                            <td innerHTML="{{ EventRewardAdd.EPoints | highlight :searchText1}}"></td>
+                            <td innerHTML="{{ EventRewardAdd.EDescription| highlight :searchText1}}"></td>
+                            <td innerHTML="{{ EventRewardAdd.EDate | highlight :searchText1}}"></td>
+                            <td innerHTML="{{ EventRewardAdd.ELocation | highlight :searchText1}}"></td>
+                            <!--Moenie die code verander nie. Sit net nuwe kollomme bo dit in-->
+                            <td> <button class="btn btn-default btn-sm " (click)="edit1(EventRewardAdd.EID)" id="editbtn " data-toggle="tooltip" data-placement="top" title="Modify"><img src="/assets/ios-create.svg "
+                  class="edit " /></button><button class="btn btn-default btn-sm " (click)="delete1(EventRewardAdd.EID)" id="editbtn" data-toggle="tooltip" data-placement="top" title="Remove"><img
+                  src="/assets/ios-trash.svg " class="edit " /></button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal- Moenie verander nie. uncomment net die modal vir input error as die duplicate entry message gebruik moet word. Gaan later dit koppel aan waar dit moet wees. -->
+
+<div class="modal fade" id="myModal" data-backdrop="static" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" style="text-align: left !important;"><img src="/assets/ios-alert.svg" style="width:40px; margin-top:0px;" />Error</h4>
+                <button type="button" class="close" data-dismiss="modal" style="float:right !important;">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>This record already exists. Please try again</p>
+                <button type="button" class="btn btn-default" data-dismiss="modal" style="float: right !important;" id="modalClose">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<a hidden data-toggle="modal" data-target="#Delmodal" id="del1"></a>
+<!-- Modal- Moenie verander nie. uncomment net die modal vir input error as die duplicate entry message gebruik moet word. Gaan later dit koppel aan waar dit moet wees. -->
+<div class="modal fade" id="Delmodal" data-backdrop="static" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" style="text-align: left !important;"><img src="/assets/ios-alert.svg" style="width:40px; margin-top:0px;" />Warning</h4>
+                <button type="button" class="close" data-dismiss="modal" style="float:right !important; ">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>This record will be permanently deleted. Are you sure you want to continue?</p>
+                <button type="button" class="btn btn-default" data-dismiss="modal" style="float: right !important;" id="modalClose" (click)="del1()">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<a hidden data-toggle="modal" data-target="#Delmodal1" id="del"></a>
+<!-- Modal- Moenie verander nie. uncomment net die modal vir input error as die duplicate entry message gebruik moet word. Gaan later dit koppel aan waar dit moet wees. -->
+<div class="modal fade" id="Delmodal1" data-backdrop="static" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" style="text-align: left !important;"><img src="/assets/ios-alert.svg" style="width:40px; margin-top:0px;" />Warning</h4>
+                <button type="button" class="close" data-dismiss="modal" style="float:right !important; ">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>This record will be permanently deleted. Are you sure you want to continue?</p>
+                <button type="button" class="btn btn-default" data-dismiss="modal" style="float: right !important;" id="modalClose" (click)="del()">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>

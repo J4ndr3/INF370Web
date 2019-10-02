@@ -1,0 +1,49 @@
+<h1>
+    REGISTERD VEHICLE REPORT</h1>
+<hr class="hrow" />
+<div class="outer">
+    <div class="button">
+        <button type="submit" class="btn btn-default" id="Save" (click)="Download()" data-toggle="collapse" data-target="#demo"><span data-toggle="tooltip" data-placement="top" title="Click to download"> Download PDF </span></button>
+    </div>
+    <!--Moenie buttons en search bar verander nie-->
+
+</div>
+
+<br>
+<div id="content" #content>
+    <div id="contentToConvert">
+        <div id="chrt1" align="center"></div>
+        <div class="table">
+            <table class="table table-striped" id="vehicle">
+                <thead>
+                    <tr id="header">
+                        <th style="text-align: left;">Name</th>
+                        <th style="text-align: left;">Surname</th>
+                        <th style="text-align: left;">Cell</th>
+                        <th style="text-align: left;">Make</th>
+                        <th style="text-align: left;">Model</th>
+                        <th style="text-align: left;">Colour</th>
+                        <th style="text-align: left;">Registration number</th>
+                        <!--<th>Actions</th>-->
+                    </tr>
+                </thead>
+                <tbody id="mytable">
+                    <tr *ngFor="let Vehicle of Vehicles">
+                        <td style="text-align: left;">{{Vehicle.Name}}</td>
+                        <td style="text-align: left;">{{Vehicle.Surname}}</td>
+                        <td style="text-align: left;">{{Vehicle.Cell}}</td>
+                        <td style="text-align: left;">{{Vehicle.Make}}</td>
+                        <td style="text-align: left;">{{Vehicle.Model}}</td>
+                        <td style="text-align: left;">{{Vehicle.Colour}}</td>
+                        <td style="text-align: left;">{{Vehicle.Redgistration}}</td>
+                        <!--Moenie die code verander nie. Sit net nuwe kollomme bo dit in-->
+
+                    </tr>
+                </tbody>
+            </table>
+
+
+        </div>
+        <div id="chrt2" align="center"></div>
+    </div>
+</div>

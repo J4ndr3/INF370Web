@@ -1,0 +1,122 @@
+<h1>{{Ranger.Name}} {{Ranger.Surname}}</h1>
+<div style="margin:auto; width: 45%;">
+    <table style="border: none !important;">
+        <tr style="border: none !important;">
+            <td style="border: none !important;">
+                <h5 align="left " style="color: black " data-toggle="tooltip" data-placement="top" title="Cellphone Number"> <img src="./assets/ios-call.svg " width="10% "><b>: {{Ranger.Cell}}</b></h5>
+            </td>
+
+
+            <td style="border: none !important;">
+                <h5 align="right " style="color: black "data-toggle="tooltip" data-placement="top" title="Email"><img src="./assets/ios-mail.svg " width="10% "><b>: {{Ranger.Email}}</b></h5>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<hr class="hrow " />
+
+<div class="table " style="width:40% !important; margin:auto; ">
+    <table style="text-align: left !important;">
+        <tr>
+            <th style="border: 1px solid;text-align: left !important;">Roles</th>
+            <td style="color:black !important;background-color: rgba(207, 209, 211, 0.75) !important; border: 1px solid black !important;text-align: left !important;">{{Ranger.User_Role_ID}}</td>
+        </tr>
+        <tr>
+            <th style="border: 1px solid;text-align: left !important;">ID</th>
+            <td style="color:black !important;background-color: rgba(207, 209, 211, 0.75) !important; border: 1px solid black !important;text-align: left !important;">{{Ranger.ID_Number}}</td>
+        </tr>
+        <tr>
+            <th style="border: 1px solid;text-align: left !important;">Emergency Name</th>
+            <td style="color:black !important;background-color: rgba(207, 209, 211, 0.75) !important; border: 1px solid black !important;text-align: left !important;">{{Ranger.Emerg_Name}}</td>
+        </tr>
+        <tr>
+            <th style="border: 1px solid;text-align: left !important;">Emergency Number</th>
+            <td style="color:black !important;background-color: rgba(207, 209, 211, 0.75) !important; border: 1px solid black !important;text-align: left !important;">{{Ranger.Emerg_Contact}}</td>
+        </tr>
+        <tr>
+            <th style="border: 1px solid;text-align: left !important;">Medical Aid</th>
+            <td style="color:black !important;background-color: rgba(207, 209, 211, 0.75) !important; border: 1px solid black !important;text-align: left !important;">{{Ranger.Medical_Aid_ID}}</td>
+        </tr>
+        <tr>
+            <th style="border: 1px solid;text-align: left !important;">Blood type</th>
+            <td style="color:black !important;background-color: rgba(207, 209, 211, 0.75) !important; border: 1px solid black !important;text-align: left !important;">{{Ranger.Blood_Type}}</td>
+        </tr>
+        <tr>
+            <th style="border: 1px solid;text-align: left !important;">Gender</th>
+            <td style="color:black !important;background-color: rgba(207, 209, 211, 0.75) !important; border: 1px solid black !important;text-align: left !important;">{{Ranger.genderID}}</td>
+        </tr>
+        <tr>
+            <th style="border: 1px solid;text-align: left !important;">Organisation</th>
+            <td style="color:black !important;background-color: rgba(207, 209, 211, 0.75) !important; border: 1px solid black !important;text-align: left !important;">{{Ranger.Organisation_ID}}</td>
+        </tr>
+        <tr>
+            <th style="border: 1px solid;text-align: left !important;">Status</th>
+            <td style="color:black !important;background-color: rgba(207, 209, 211, 0.75) !important; border: 1px solid black !important;text-align: left !important;">{{Ranger.Status}}</td>
+        </tr>
+        <tr>
+            <th style="border: 1px solid;text-align: left !important;">User Name</th>
+            <td style="color:black !important;background-color: rgba(207, 209, 211, 0.75) !important; border: 1px solid black !important;text-align: left !important;">{{Ranger.Username}}</td>
+        </tr>
+    </table>
+</div>
+<br>
+<div style="width:40% !important; margin: auto" id="savediv">
+    <button style="float: right;" type="submit" class="btn btn-default" id="Save" (click)="close()" data-toggle="collapse" data-target="#demo"><span data-toggle="tooltip" data-placement="top" title="Click to return">Done</span></button>
+</div>
+
+<br>
+<h1>Patrols</h1>
+<div class="table">
+    <table class="table table-striped">
+        <thead>
+            <tr id="header">
+                <th>Date</th>
+                <th>Total time patrolled</th>
+                <th>Markers passed</th>
+                <th>Feedback</th>
+                <th>Incidents</th>
+                <!-- <th>Information</th> -->
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of patrolsList">
+                <td>{{item.Date}}</td>
+                <td>{{item.time}} hours</td>
+                <td>{{item.MarkerPast}}</td>
+                <td>{{item.Feedback}}</td>
+                <td>
+                    <button style="float: right;" class="btn btn-default" (click)="Incidents(item.Patrol_Log_ID)" data-toggle="tooltip" data-placement="top" title="View" >View Incidents</button> 
+                    
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>   
+<br>
+<!-- <div *ngIf="show" style="width:80% !important; margin: auto;  background-color: rgba(62, 105, 112, 0.7)!important" >
+    <p style="color:white; text-align:left; margin-left:5%; font-size: 110%;">Incident Information</p>
+    <ul>
+        <li *ngFor="let inc of incidentsList" style="color:white;margin-left:5%;">{{inc.Status}}: {{inc.Description}} - reported on {{inc.Date}} {{inc.Time}}</li>
+    </ul>
+</div> -->
+
+<a hidden data-toggle="modal" data-target="#info1" id="info2"></a>
+<div class="modal fade" id="info1" data-backdrop="static" role="dialog">
+    <div class="modal-dialog"  style="width:60% !important">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" style="text-align: left !important;"><img src="/assets/ios-alert.svg" style="width:40px; margin-top:0px;" />Incidents</h4>
+                <button type="button" class="close" data-dismiss="modal" style="float:right !important;">&times;</button>
+            </div>
+            <div class="modal-body">
+                
+    <ul>
+        <li *ngFor="let inc of incidentsList" style="color:black; font-size:90%">{{inc.Status}}: {{inc.Description}} - reported on {{inc.Date}} {{inc.Time}}</li>
+    </ul>
+
+                <button type="button" class="btn btn-default" data-dismiss="modal" style="float: right !important;" id="modalClose" >Close</button>
+            </div>
+        </div>
+    </div>
+</div>

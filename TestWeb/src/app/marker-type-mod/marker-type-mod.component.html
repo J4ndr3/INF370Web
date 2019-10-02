@@ -1,0 +1,54 @@
+<h1>
+    MODIFY MARKER TYPE</h1>
+<hr class="hrow" />
+<br>
+
+<div class="inner">
+    <div class="back">
+        <button class="btn btn-default btn-sm" id="backBTN" routerLink="/markertype" data-toggle="tooltip" data-placement="top" title="Back">
+          <img src="/assets/ios-arrow-round-back.svg" class="BackBTN" /></button>
+    </div>
+    <br>
+    <form class="form-horizontal" id="modifyForm" [formGroup]="EditForm" (ngSubmit)="update()">
+
+        <div class="form-group">
+            <h2 class="Header">Marker Type Information:</h2>
+            <br>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="Level" formControlName="ID" hidden required>
+                <input type="text" class="form-control" id="Level" formControlName="Type" placeholder="Marker Type Description..." name="Level" required data-toggle="tooltip" data-placement="top" title="Marker Type Description">
+            </div>
+            <div class="col-sm-10">
+                <input type="number" class="form-control" id="Level" formControlName="Points_Worth" placeholder="Points worth..." required data-toggle="tooltip" data-placement="top" title="Points Worth
+                ">
+            </div>
+        </div>
+        <!--Moenie die save button verander nie-->
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10" id="savediv">
+                <button type="submit" class="btn btn-default" id="Save" data-toggle="tooltip" data-placement="top" title="Click to save">Save</button>
+            </div>
+            <br>
+            <br>
+        </div>
+    </form>
+</div>
+
+
+<div class="modal fade" id="myModal" role="dialog" data-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" style="text-align: left !important;"><img src="/assets/ios-alert.svg" style="width:40px; margin-top:0px;" />Error</h4>
+                <button type="button" class="close" data-dismiss="modal" style="float:right !important;">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>The input provided is incorrect. Please try again.</p>
+                <button type="button" class="btn btn-default" data-dismiss="modal" style="float: right !important;" id="modalClose">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<br>

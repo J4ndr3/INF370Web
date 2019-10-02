@@ -1,0 +1,84 @@
+<h1>MODIFY ACCESS LEVEL</h1>
+<hr class="hrow" />
+<br>
+
+<div class="inner">
+    <div class="back">
+        <button class="btn btn-default btn-sm" id="backBTN" routerLink="/userrole" data-toggle="tooltip" data-placement="top" title="Back">
+          <img src="/assets/ios-arrow-round-back.svg" class="BackBTN" /></button>
+    </div>
+    <br>
+    <form class="form-horizontal" id="modifyForm" [formGroup]="EditForm" (ngSubmit)="update()">
+
+        <div class="form-group">
+            <h2 class="Header">Access Level Information:</h2>
+            <br>
+            <div class="form-group">
+                <input hidden formControlName="ID">
+                <div class="col-sm-10">
+                    <select class="form-control" formControlName="Web" id="Select1" onchange="selectColor()" required data-toggle="tooltip" data-placement="top" title="Web Access">
+                    <option disabled  [value]="" style="color:white" >Web Access...</option>
+                    <option value="True">True</option>
+                    <option value="False">False</option>
+                  </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-10">
+                    <select class="form-control" id="Select1" formControlName="Report" onchange="selectColor()" required data-toggle="tooltip" data-placement="top" title="Report Access">
+                      <option disabled  [value]="" style="color:white">Report Access...</option>
+                      <option value="True">True</option>
+                      <option value="False">False</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-10">
+                    <select class="form-control" formControlName="Write" id="Select1" onchange="selectColor()" required data-toggle="tooltip" data-placement="top" title="Write Access">
+                        <option disabled  [value]="" style="color:white">Write Access...</option>
+                        <option value="True">True</option>
+                        <option value="False">False</option>
+                      </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-10">
+                    <select class="form-control" formControlName="App" id="Select1" onchange="selectColor()" required data-toggle="tooltip" data-placement="top" title="App Access">
+                          <option disabled  [value]="" style="color:white">App Access...</option>
+                          <option value="True">True</option>
+                          <option value="False">False</option>
+                        </select>
+                </div>
+            </div>
+        </div>
+
+
+        <!--Moenie die save button verander nie-->
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10" id="savediv">
+                <button type="submit" class="btn btn-default" id="Save" data-toggle="tooltip" data-placement="top" title="Click to save">Save</button>
+            </div>
+            <br>
+            <br>
+        </div>
+    </form>
+</div>
+
+
+<div class="modal fade" id="myModal" role="dialog" data-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" style="text-align: left !important;"><img src="/assets/ios-alert.svg" style="width:40px; margin-top:0px;" />Error</h4>
+                <button type="button" class="close" data-dismiss="modal" style="float:right !important;">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>The input provided is incorrect. Please try again.</p>
+                <button type="button" class="btn btn-default" data-dismiss="modal" style="float: right !important;" id="modalClose">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<br>

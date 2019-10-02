@@ -1,0 +1,90 @@
+<br>
+<h1>INCIDENT REPORT</h1>
+<hr class="hrow" />
+<br>
+<div align="center"><button type="button" data-toggle="collapse" data-target="#demo" class="btn btn-outline-secondary" (click)="clear()"><span data-toggle="tooltip" data-placement="top" title="Select Date">Date Picker </span></button></div>
+
+<br>
+<div class="collapse" id="demo" align="center" style="width:474.8px; background-color:rgba(62, 105, 112, 0.3); margin: auto;" >
+    <ngb-datepicker #dp (select)="onDateSelection($event)" [displayMonths]="2" [dayTemplate]="t" outsideDays="hidden">
+    </ngb-datepicker>
+
+    <ng-template #t let-date let-focused="focused">
+        <span class="custom-day" [class.focused]="focused" [class.range]="isRange(date)" [class.faded]="isHovered(date) || isInside(date)" (mouseenter)="hoveredDate = date" (mouseleave)="hoveredDate = null">
+          {{ date.day }}
+        </span>
+    </ng-template>
+
+    <pre hidden>From: {{ fromDate | json }} </pre>
+    <pre hidden>To: {{ toDate | json }} </pre>
+
+</div>
+<br>
+<div id="my-node">
+    <div id="mapDiv">
+        <div #map style="width:80%;height:100%; margin: auto;"></div>
+    </div>
+</div>
+<br>
+<hr class="hrow" />
+<div class="outer">
+    <div class="button">
+        <button type="submit" class="btn btn-default" id="Save" (click)="Download()" data-toggle="tooltip" data-placement="top" title="Click to download">Download PDF</button>
+    </div>
+    <!--Moenie buttons en search bar verander nie-->
+
+</div>
+<br>
+<div id="content" #content>
+    <div id="contentToConvert">
+        <div id="chrt1" align="center"></div>
+
+        <div id="image123" #img style="width:80%; margin: auto" align="center"></div>
+
+        <div id="chrt3"></div>
+        <div class="table">
+            <table class="table table-striped">
+                <thead>
+                    <tr id="header">
+                        <th style="text-align: left;">Title</th>
+                        <th style="text-align: left;">Name</th>
+                        <th style="text-align: left;">Surname</th>
+                        <th style="text-align: left;">Cellphone</th>
+                        <th style="text-align: left;">Incident level</th>
+                        <th style="text-align: left;">Date</th>
+                        <th style="text-align: right;">Time</th>
+
+                        <!--<th>Actions</th>-->
+                    </tr>
+                </thead>
+                <tbody id="mytable">
+                    <tr *ngFor="let Marker of Markers">
+                        <td style="text-align: left;">{{Marker.Title}}</td>
+                        <td style="text-align: left;">{{Marker.Name}}</td>
+                        <td style="text-align: left;">{{Marker.Surname}}</td>
+                        <td style="text-align: left;">{{Marker.Cell}}</td>
+                        <td style="text-align: left;">{{Marker.Level}}</td>
+                        <td style="text-align: left;">{{Marker.Date}}</td>
+                        <td style="text-align: right;">{{Marker.Time}}</td>
+
+
+                        <!--Moenie die code verander nie. Sit net nuwe kollomme bo dit in-->
+
+                    </tr>
+                </tbody>
+                <tbody id="mytable">
+
+                    <tfoot style="background-color:rgba(205, 21, 67);">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td style="text-align: left;">Total incidents</td>
+                        <td style="text-align: left;">:</td>
+                        <td style="text-align: right;">{{IncedentCount}}</td>
+                    </tfoot>
+            </table>
+        </div>
+        <div id="chrt2" align="center"></div>
+    </div>
+</div>

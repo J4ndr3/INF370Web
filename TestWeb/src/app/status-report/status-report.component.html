@@ -1,0 +1,165 @@
+<h1>
+    STATUS REPORT</h1>
+<hr class="hrow" />
+<br>
+<div align="center">
+    <div class="col">
+        <div ngbDropdown>
+            <button class="btn btn-outline-secondary" id="dropdownBasic1" ngbDropdownToggle data-toggle="tooltip" data-placement="top" title="Choose an option">Select Status</button>
+            <div ngbDropdownMenu style="background-color:rgba(62, 105, 112)">
+                <button data-toggle="collapse" data-target="#demo" ngbDropdownItem>Ranger</button>
+                <button data-toggle="collapse" data-target="#demo1" ngbDropdownItem>Asset</button>
+                <button data-toggle="collapse" data-target="#demo2" ngbDropdownItem>Vehicle</button>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="collapse" id="demo">
+        <br>
+        <h3 align="center">Ranger Status Report</h3>
+        <div class="outer">
+            <div class="button">
+                <button type="submit" class="btn btn-default" id="Save" routerLink="/download-status" data-toggle="collapse" data-target="#demo"> <span data-toggle="tooltip" data-placement="top" title="Click to download"> PDF</span></button>
+            </div>
+            <!--Moenie buttons en search bar verander nie-->
+
+        </div>
+
+        <div class="table">
+            <table class="table table-striped">
+                <thead>
+                    <tr id="header">
+                        <th>Name</th>
+                        <th>Surname</th>
+                        <th>Cellphone</th>
+                        <th>Email</th>
+                        <th>Status</th>
+
+                        <!--<th>Actions</th>-->
+                    </tr>
+                </thead>
+                <tbody id="mytable">
+                    <tr *ngFor="let Ranger of Rangers">
+                        <td>{{Ranger.Name}}</td>
+                        <td>{{Ranger.Surname}}</td>
+                        <td>{{Ranger.Cell}}</td>
+                        <td>{{Ranger.Email}}</td>
+                        <td>{{Ranger.Status}}</td>
+                        <!--Moenie die code verander nie. Sit net nuwe kollomme bo dit in-->
+
+                    </tr>
+                </tbody>
+                <tfoot style="background-color:rgba(205, 21, 67);">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>Total Active Rangers : {{Count1}}</td>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+    <br>
+    <div class="collapse" id="demo1">
+        <br>
+        <h3 align="center">Asset Status</h3>
+        <div class="outer">
+            <div class="button">
+                <button type="submit" class="btn btn-default" id="Save" routerLink="/download-status" data-toggle="collapse" data-target="#demo"> <span data-toggle="tooltip" data-placement="top" title="Click to download"> Download PDF </span></button>
+            </div>
+            <!--Moenie buttons en search bar verander nie-->
+
+        </div>
+
+        <div class="table">
+            <table class="table table-striped">
+                <thead>
+                    <tr id="header">
+
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Status</th>
+
+
+                        <!--<th>Actions</th>-->
+                    </tr>
+                </thead>
+                <tbody id="mytable">
+                    <tr *ngFor="let Asset of Assets">
+
+                        <td>{{Asset.Type}}</td>
+                        <td>{{Asset.Description}}</td>
+                        <td>{{Asset.Status}}</td>
+
+                        <!--Moenie die code verander nie. Sit net nuwe kollomme bo dit in-->
+
+                    </tr>
+                </tbody>
+                <tfoot style="background-color:rgba(205, 21, 67);">
+
+                    <td></td>
+                    <td></td>
+                    <td>Total Active Assets : {{Count}}</td>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+    <div class="collapse" id="demo2">
+        <br>
+        <h3 align="center">Vehicle Status</h3>
+        <div class="outer">
+            <div class="button">
+                <button type="submit" class="btn btn-default" id="Save" routerLink="/download-status" data-toggle="collapse" data-target="#demo"> <span data-toggle="tooltip" data-placement="top" title="Click to download"> Download PDF </span></button>
+            </div>
+            <!--Moenie buttons en search bar verander nie-->
+
+        </div>
+
+        <div class="table">
+            <table class="table table-striped">
+                <thead>
+                    <tr id="header">
+
+                        <th>Make</th>
+                        <th>Model</th>
+                        <th>Colour</th>
+                        <th>Registration number</th>
+                        <th>Status</th>
+                        <!--<th>Actions</th>-->
+                    </tr>
+                </thead>
+                <tbody id="mytable">
+                    <tr *ngFor="let Vehicle of Vehicles">
+                        <td>{{Vehicle.Make}}</td>
+                        <td>{{Vehicle.Model}}</td>
+                        <td>{{Vehicle.Colour}}</td>
+                        <td>{{Vehicle.Redgistration}}</td>
+                        <td>{{Vehicle.Status}}</td>
+
+                        <!--Moenie die code verander nie. Sit net nuwe kollomme bo dit in-->
+
+                    </tr>
+                </tbody>
+
+
+                <tfoot style="background-color:rgba(205, 21, 67);">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>Total Active Vehicles : {{Count2}}</td>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+    <div class="table">
+        <table class="table table-striped">
+            <tfoot style="background-color:rgba(205, 21, 67);">
+                <td>Total Active Statuses</td>
+                <td></td>
+                <td></td>
+                <td>:</td>
+                <td> {{TotalStatus}}</td>
+            </tfoot>
+        </table>
+    </div>

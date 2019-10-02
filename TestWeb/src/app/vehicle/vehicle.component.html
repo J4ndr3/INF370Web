@@ -1,0 +1,173 @@
+<!--Verander opskrif vir elke page-->
+
+<h1>VEHICLES</h1>
+<hr class="hrow" />
+
+<div class="outer">
+    <!--Moenie buttons en search bar verander nie-->
+    <div class="button">
+        <button type="button" class="btn btn-default btn-sm" id="addBTN" data-toggle="collapse" data-target="#demo"> <span data-toggle="tooltip" data-placement="top" title="Click to add new">ADD
+            NEW
+            <img src="/assets/ios-add.svg" class="plus" style="background-color: rgb(134,158,195) " /></span></button>
+    </div>
+
+    <div class="search">
+        <div class="input-group">
+            <input type="text" [(ngModel)]="searchText" autocomplete="off" class="form-control" placeholder="Search..." name="search" id="SearchBTN" data-toggle="tooltip" data-placement="top" title="Type to search"><button class="btn btn-default" type="submit" id="Search"><img
+                    src="/assets/ios-search.svg" class="SearchbtnIMG" /></button>
+        </div>
+
+    </div>
+</div>
+<br>
+<br>
+
+
+<div class="inner collapse" id="demo">
+    <div class="close">
+        <button class="btn btn-default btn-sm" id="closeBTN" data-toggle="collapse" data-target="#demo" ><span data-toggle="tooltip" data-placement="top" title="Close">
+            <img src="/assets/ios-close.svg" class="closePic" /> </span></button>
+    </div>
+
+    <div class="inputForm">
+        <br>
+        <form class="form-horizontal" id="modifyForm" [formGroup]="AddForm" (ngSubmit)="addVehicle()">
+
+            <div class="form-group">
+                <h2 class="Header">Add Vehicle</h2>
+                <br>
+                <div class="col-sm-10">
+                    <select class="form-control" formControlName="Make"  id="Select1" onchange="selectColor()" (change)="select3()" required>
+                        <option selected disabled hidden  [value]="">Make...</option>
+                        <option *ngFor="let item of MakeOptions" [(value)]="item.Make_ID">{{item.Name}}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-10">
+                    <select class="form-control" formControlName="Model" id="Select1" onchange="selectColor()" required>
+                        <option selected disabled hidden  [value]="">Model...</option>
+                        <option *ngFor="let item of ModelOptions" [(value)]="item.Model_ID">{{item.Model}} {{item.Year}}
+                        </option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-10">
+                    <select class="form-control" formControlName="Type"  id="Select1" onchange="selectColor()" required>
+                        <option selected disabled hidden  [value]="">Type...</option>
+                        <option *ngFor="let item of TypeOptions" [(value)]="item.Vehicle_Type_ID">
+                            {{item.Type_Description}}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-10">
+                    <select class="form-control"  formControlName="Colour"  id="Select1" onchange="selectColor()" required>
+                        <option selected disabled hidden  value="Colour...">Colour...</option>
+                        <option>Red</option>
+                        <option>White</option>
+                        <option>Black</option>
+                        <option>Green</option>
+                        <option>Blue</option>
+                        <option>Silver</option>
+                        <option>Pink</option>
+                        <option>Purple</option>
+                        <option>Yellow</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="Cell" formControlName="Registration" placeholder="Registration Number..." name="Cell" maxlength="10" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="Cell" formControlName="Status" value="1" hidden required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10" id="savediv">
+                    <button type="submit" class="btn btn-default" id="Save" data-toggle="collapse" data-target="#demo" data-toggle="tooltip" data-placement="top" title="Click to save">Save</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <br>
+    <br>
+</div>
+<br />
+<!--TABLE-->
+
+<div class="table">
+    <table class="table table-striped">
+        <thead>
+            <tr id="header">
+                <th>Make</th>
+                <th>Model</th>
+                <th>Colour</th>
+                <th>Registration number</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="mytable">
+            <tr *ngFor="let Item of Vehicle |filter:searchText">
+                <td innerHTML="{{ Item.Make | highlight :searchText}}"></td>
+                <td innerHTML="{{ Item.Model | highlight :searchText}}"></td>
+                <td innerHTML="{{ Item.Colour | highlight :searchText}}"></td>
+                <td innerHTML="{{ Item.Registration | highlight :searchText}}"></td>
+                <!--Moenie die code verander nie. Sit net nuwe kollomme bo dit in-->
+                <td> <button class="btn btn-default btn-sm" id="editbtn" (click)="edit(Item.Vehicle_ID)" data-toggle="tooltip" data-placement="top" title="Modify"><img
+                            src="/assets/ios-create.svg" class="edit" /></button><button class="btn btn-default btn-sm" id="editbtn" (click)="delete(Item.Vehicle_ID)" data-toggle="tooltip" data-placement="top" title="Remove"><img src="/assets/ios-trash.svg"
+                            class="edit" /></button>
+            </tr>
+        </tbody>
+    </table>
+
+
+</div>
+<!-- Modal- Moenie verander nie. uncomment net die modal vir input error as die duplicate entry message gebruik moet word. Gaan later dit koppel aan waar dit moet wees. -->
+<<a hidden data-toggle="modal" data-target="#Delmodal" id="del"></a>
+    <!-- Modal- Moenie verander nie. uncomment net die modal vir input error as die duplicate entry message gebruik moet word. Gaan later dit koppel aan waar dit moet wees. -->
+    <div class="modal fade" id="Delmodal" data-backdrop="static" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" style="text-align: left !important;"><img src="/assets/ios-alert.svg" style="width:40px; margin-top:0px;" />Warning</h4>
+                    <button type="button" class="close " data-dismiss="modal " style="float:right !important; ">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>This record will be permanently deleted. Are you sure you want to continue?</p>
+                    <button type="button" class="btn btn-default" data-dismiss="modal" style="float: right !important;" id="modalClose" (click)="del()">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!--comment en uncomment net om screenshots van die verskillende error messages te kry-->
+    <div class="modal fade" id="myModal" data-backdrop="static" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" style="text-align: left !important;"><img src="/assets/ios-alert.svg" style="width:40px; margin-top:0px;" />Error</h4>
+                    <button type="button" class="close" data-dismiss="modal" style="float:right !important;">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>This record already exists. Please try again</p>
+                    <button type="button" class="btn btn-default" data-dismiss="modal" style="float: right !important;" id="modalClose">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
